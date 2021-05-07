@@ -1,7 +1,7 @@
 /**
- * 
+ * Main class where everything is run
  * @author Ameya
- *Main class where everything is run
+ *
  */
 public class Main {
 
