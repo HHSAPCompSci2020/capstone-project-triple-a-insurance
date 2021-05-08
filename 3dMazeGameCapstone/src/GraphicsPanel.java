@@ -1,4 +1,5 @@
+import javax.swing.JFrame;
 
-public class GraphicsPanel {
+public class GraphicsPanel extends JFrame{
 
 }
