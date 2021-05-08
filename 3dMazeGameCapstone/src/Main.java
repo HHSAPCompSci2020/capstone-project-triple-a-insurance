@@ -1,21 +1,28 @@
-//Author: Aayush Lakhotia
-//Notes: this is the main class that makes a window to start the game
+
+import java.awt.Dimension;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+import processing.awt.PSurfaceAWT;
+import processing.core.PApplet;
 
 public class Main {
+	
+	public static void main(String args[]) {
+		
+		GraphicsPanel drawing = new GraphicsPanel();
+		PApplet.runSketch(new String[]{""}, drawing);
+		PSurfaceAWT surf = (PSurfaceAWT) drawing.getSurface();
+		PSurfaceAWT.SmoothCanvas canvas = (PSurfaceAWT.SmoothCanvas) surf.getNative();
+		JFrame window = (JFrame)canvas.getFrame();
 
-	public static void main(String[] args) {
-		
-		// Code for setting up window
-		
-		GraphicsPanel window = new GraphicsPanel("3dMaze");
-		// Sets the screen size to the width of the computer screen and the height to 80 pixels less than the computer screen height
-		window.setBounds(0, 0, 1440, 820); 
+		window.setSize(800, 600);
+		window.setMinimumSize(new Dimension(100,100));
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// Makes it so that the window can not be resized
-		window.setResizable(false);
-		window.setVisible(true);
+		window.setResizable(true);
 
+		window.setVisible(true);
+		canvas.requestFocus();
 	}
 
 }
