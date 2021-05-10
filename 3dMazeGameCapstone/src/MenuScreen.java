@@ -1,4 +1,13 @@
+import processing.core.PApplet;
 
-public class MenuScreen {
+/**
+ * using processing to create this library, run when you click escape
+ * @author ameya
+ *
+ */
+public class MenuScreen extends PApplet{
+	public void draw() {
+		
+	}
 
 }
