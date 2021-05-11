@@ -10,9 +10,12 @@ public class HomeScreen extends PApplet{
 	public void draw()
 	{
 		this.text("3D Maze",width/5 ,height/10);
-		this.rect(2*height/3, width/7, width/6, height/10);
-		this.rect(2*height/3, width-width/7-width/6, width/6, height/10);
-		this.rect(3*height/4, width/4, width/2, height/10);
+		this.rect(width/7, 2*height/3, width/6, height/10);
+		this.text("Easy Mode", width/7, 2*height/3, width/7+width/6, 2*height/3+height/10);
+		this.rect(width-width/7-width/6,2*height/3 , width/6, height/10);
+		this.text("Hard Mode", width/7, 2*height/3, width/7+width/6, 2*height/3+height/10);
+		this.rect(width/4, 3*height/4, width/2, height/8);
+		this.text("Play Game", width/4, 3*height/4, width/4+width/2, 3*height/4+height/8);
 	
 	}
 }

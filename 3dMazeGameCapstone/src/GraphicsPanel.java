@@ -8,5 +8,7 @@ public class GraphicsPanel extends PApplet{
 		
 	}
 	
-	public void setup();
+	public void setup() {
+		
+	}
 }
