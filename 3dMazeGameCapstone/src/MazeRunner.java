@@ -10,10 +10,6 @@ public class MazeRunner extends PApplet {
 	private Player player;
 	private Maze maze;
 
-	public static void main(String[] args) {
-		PApplet.main("MazeRunner");
-	}
-
 	public void settings() {
 		size(1000,1000,P3D);
 		

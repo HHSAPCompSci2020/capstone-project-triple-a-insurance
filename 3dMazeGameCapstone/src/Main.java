@@ -12,7 +12,7 @@ public class Main {
 	public static void main(String args[]) {
 		
 
-		PApplet.main("GraphicsPanel");
+		PApplet.main("MazeRunner");
 		/*PApplet.runSketch(new String[]{""}, drawing);
 		PSurfaceJOGL surf = (PSurfaceJOGL) drawing.getSurface();
 		PSurfaceAWT.SmoothCanvas canvas = (PSurfaceAWT.SmoothCanvas) surf.getNative();
