@@ -22,9 +22,10 @@ public class Block {
 	}
 	
 	public void draw (PApplet g) {
+		
 		g.pushMatrix();
 		g.translate(x, y, z);
-		g.fill(200);
+		g.fill(100, 255, 100, 1);
 		g.box(SIZE);
 		g.popMatrix();
 		

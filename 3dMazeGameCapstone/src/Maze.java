@@ -11,17 +11,19 @@ public class Maze {
 	private int HARD = 30;
 	
 	public Maze (int size) {
-		boolean[][][] tempArr = new boolean[size][size][size];
-		generate (tempArr);
+		maze = new Block[size][size][size];
+		generate (maze);
 	}
 	
-	private void generate (boolean [][][] arr) {
+	private void generate (Block [][][] arr) {
 		// Generate Larger Area
 		//    - keep track of volume
 		//    - make sure it is self-contained
 		//    - all contents of this hedged off area is contained in list
 				
-		int width = arr.length/6;
+		
+		
+		/*int width = arr.length/6;
 		double randx = (int)(Math.random()*(maze.length - 7) + 3);
 		int randy = (int)(Math.random()*(maze.length - 7) + 3);
 		int dir = 1;
@@ -42,7 +44,7 @@ public class Maze {
 				break;
 			}
 			break;
-		}
+		}*/
 		/* Generate Maze within confined space
 			1. Remove start point from larger list of walls
 			2. 
