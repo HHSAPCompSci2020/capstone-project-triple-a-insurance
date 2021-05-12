@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 import processing.core.*;
 
@@ -16,7 +17,14 @@ public class Maze {
 				float x = i * 5;
 				float y = 0;
 				float z = j * 5;
-				blocks[i][j] = new Block(x, y, z, 5);
+				Random rand = new Random();
+				int trapnum = rand.nextInt(1 - 5 + 1) + 1;
+				if(trapnum == 1) {
+					blocks[i][j] = new Trap(x, y, z, 5);
+				}
+				else {
+					blocks[i][j] = new Block(x, y, z, 5);
+				}
 				b.add(blocks[i][j]);
 			}
 		}
