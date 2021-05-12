@@ -10,6 +10,6 @@ public class GraphicsPanel extends PApplet{
 	}
 	
 	public void setup() {
-		
+		background(255);   // Clear the screen with a white background
 	}
 }
