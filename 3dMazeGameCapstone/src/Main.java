@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 
 import processing.awt.PSurfaceAWT;
 import processing.core.PApplet;
+import processing.opengl.PSurfaceJOGL;
 
 public class Main {
 	
@@ -12,7 +13,7 @@ public class Main {
 		
 		GraphicsPanel drawing = new GraphicsPanel();
 		PApplet.runSketch(new String[]{""}, drawing);
-		PSurfaceAWT surf = (PSurfaceAWT) drawing.getSurface();
+		PSurfaceJOGL surf = (PSurfaceJOGL) drawing.getSurface();
 		PSurfaceAWT.SmoothCanvas canvas = (PSurfaceAWT.SmoothCanvas) surf.getNative();
 		JFrame window = (JFrame)canvas.getFrame();
 
