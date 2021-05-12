@@ -18,4 +18,11 @@ public class HomeScreen extends PApplet{
 		this.text("Play Game", width/4, 3*height/4, width/4+width/2, 3*height/4+height/8);
 	
 	}
+	
+	public boolean isChosen(int clickX, int clickY, int rectX, int rectY, int rectX1, int rectY1) {
+		if((clickX>=rectX && clickX<=rectX1)&&(clickY>=rectY && clickY<=rectY1)) {
+			return true;
+		}
+		return false;
+	}
 }
