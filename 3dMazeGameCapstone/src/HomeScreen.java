@@ -1,4 +1,5 @@
 import processing.core.PApplet;
+import processing.core.PImage;
 
 /**
  * The first screen a user sees has parameters, default is easy mode
@@ -6,11 +7,18 @@ import processing.core.PApplet;
  *
  */
 public class HomeScreen extends PApplet{
-	public int width, height;
+	private int width, height;
+	PImage backgroundImg;
+	public void setup() {
+		backgroundImg = loadImage("MazeGame.jpg");
+	}
 	public void draw()
 	{
-		this.text("3D Maze",width/5 ,height/10);
+		image(backgroundImg,0,0);
+		this.textSize(24);
+		this.text("3D Maze",width/5 ,height/20);
 		this.rect(width/7, 2*height/3, width/6, height/10);
+		this.textSize(12);
 		this.text("Easy Mode", width/7, 2*height/3, width/7+width/6, 2*height/3+height/10);
 		this.rect(width-width/7-width/6,2*height/3 , width/6, height/10);
 		this.text("Hard Mode", width/7, 2*height/3, width/7+width/6, 2*height/3+height/10);
@@ -19,7 +27,7 @@ public class HomeScreen extends PApplet{
 	
 	}
 	
-	public boolean isChosen(int clickX, int clickY, int rectX, int rectY, int rectX1, int rectY1) {
+	private boolean isChosen(int clickX, int clickY, int rectX, int rectY, int rectX1, int rectY1) {
 		if((clickX>=rectX && clickX<=rectX1)&&(clickY>=rectY && clickY<=rectY1)) {
 			return true;
 		}
