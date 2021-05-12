@@ -11,6 +11,8 @@ public class Player extends Camera {
 	private float w, h, d;
 	private boolean grounded;
 	private float gravity;
+	private boolean trapCollision = false;
+	private int ix, iy, iz;
 
 	public Player() {
 		// speed is at .12f max
@@ -70,9 +72,14 @@ public class Player extends Camera {
 			float blockBottom = b.getY() + blockHeight / 2;
 			float blockFront = b.getZ() - blockSize / 2;
 			float blockBack = b.getZ() + blockSize / 2;
+			if(b instanceof Trap) {
+				trapCollision = true;
+			}
 			// accordingly
 			if (b.isPointInCube(left, position.y, position.z)) {
 				// move right
+				if(trapCollision) {
+				}
 				position.x = blockRight + w / 2;
 			} else if (b.isPointInCube(right, position.y, position.z)) {
 				// move left

@@ -18,7 +18,7 @@ public class Maze {
 				float y = 0;
 				float z = j * 5;
 				Random rand = new Random();
-				int trapnum = rand.nextInt(1 - 5 + 1) + 1;
+				int trapnum = rand.nextInt((5 - 1) + 1) + 1;
 				if(trapnum == 1) {
 					blocks[i][j] = new Trap(x, y, z, 5);
 				}
