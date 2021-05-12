@@ -13,6 +13,7 @@ public class Player extends Camera {
 	private float gravity;
 	private boolean trapCollision = false;
 	private int ix, iy, iz;
+	private Block start;
 
 	public Player() {
 		// speed is at .12f max
@@ -79,14 +80,27 @@ public class Player extends Camera {
 			if (b.isPointInCube(left, position.y, position.z)) {
 				// move right
 				if(trapCollision) {
+					moveTo(start.getX(), start.getY(), start.getZ());
 				}
-				position.x = blockRight + w / 2;
+				else {
+					position.x = blockRight + w / 2;
+				}
 			} else if (b.isPointInCube(right, position.y, position.z)) {
 				// move left
-				position.x = blockLeft - w / 2;
+				if(trapCollision) {
+					moveTo(start.getX(), start.getY(), start.getZ());
+				}
+				else {
+					position.x = blockLeft - w / 2;
+				}
 			}
 			if (b.isPointInCube(position.x, top, position.z)) {// move down
-				position.y = blockBottom + h / 2;
+				if(trapCollision) {
+					moveTo(start.getX(), start.getY(), start.getZ());
+				}
+				else {
+					position.y = blockBottom + h / 2;
+				}
 			} else if (b.isPointInCube(position.x, bottom, position.z)) {
 				// move up/grounded
 				position.y = blockTop - h / 2;
@@ -95,10 +109,20 @@ public class Player extends Camera {
 			}
 			if (b.isPointInCube(position.x, position.y, front)) {
 				// move back
-				position.z = blockFront - d / 2;
+				if(trapCollision) {
+					moveTo(start.getX(), start.getY(), start.getZ());
+				}
+				else {
+					position.z = blockFront - d / 2;
+				}
 			} else if (b.isPointInCube(position.x, position.y, back)) {
 				// move forward
-				position.z = blockBack + d / 2;
+				if(trapCollision) {
+					moveTo(start.getX(), start.getY(), start.getZ());
+				}
+				else {
+					position.z = blockBack + d / 2;
+				}
 			}
 		}
 		velocity.y += gravity;
