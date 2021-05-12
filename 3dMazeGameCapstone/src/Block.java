@@ -16,14 +16,14 @@ public class Block {
 		this.y = y;
 		this.z = z;
 		this.size = size;
-		fillColor = (int) (Math.random() * 50 + 150);
+		fillColor = (int) (50 + 150);
 		visited = false;
 	}
 
 	public void display(PApplet g) {
 		g.pushMatrix();
 		g.translate(x, y, z);
-		g.fill(fillColor, 200);
+		g.fill(0,200,200);
 		g.box(size, size, size);
 		g.popMatrix();
 	}
