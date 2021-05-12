@@ -12,7 +12,8 @@ public class Main {
 	public static void main(String args[]) {
 		
 		GraphicsPanel drawing = new GraphicsPanel();
-		PApplet.runSketch(new String[]{""}, drawing);
+		PApplet.main("GraphicsPanel");
+		/*PApplet.runSketch(new String[]{""}, drawing);
 		PSurfaceJOGL surf = (PSurfaceJOGL) drawing.getSurface();
 		PSurfaceAWT.SmoothCanvas canvas = (PSurfaceAWT.SmoothCanvas) surf.getNative();
 		JFrame window = (JFrame)canvas.getFrame();
@@ -23,7 +24,7 @@ public class Main {
 		window.setResizable(true);
 
 		window.setVisible(true);
-		canvas.requestFocus();
+		canvas.requestFocus();*/
 	}
 
 }
