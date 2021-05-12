@@ -15,9 +15,14 @@ public class Block {
 	
 	public void add (Maze maze) {
 		this.maze = maze;
+		maze.add(this);
 	}
 	
 	public void draw (PApplet g) {
+		
+	}
+	
+	public void changeType () {
 		
 	}
 	
