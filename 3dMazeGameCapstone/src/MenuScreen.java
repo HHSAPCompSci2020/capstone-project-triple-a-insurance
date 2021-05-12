@@ -20,7 +20,4 @@ public class MenuScreen extends PApplet{
 		return false;
 	}
 	
-	public void mouseClicked() {
-		
-	}
 }
