@@ -15,9 +15,10 @@ public class Player extends Camera {
 	private int ix, iy, iz;
 	private Block start;
 
-	public Player() {
+	public Player(Block start) {
 		// speed is at .12f max
 		this(1, 3, 1, .04f, .5f, .5f, .75f, PConstants.PI / 3f, 60f);
+		this.start = start;
 	}
 
 	/**
@@ -80,7 +81,7 @@ public class Player extends Camera {
 			if (b.isPointInCube(left, position.y, position.z)) {
 				// move right
 				if(trapCollision) {
-					moveTo(start.getX(), start.getY(), start.getZ());
+					moveTo(start.getX(), start.getY()-15, start.getZ());
 				}
 				else {
 					position.x = blockRight + w / 2;
@@ -88,7 +89,7 @@ public class Player extends Camera {
 			} else if (b.isPointInCube(right, position.y, position.z)) {
 				// move left
 				if(trapCollision) {
-					moveTo(start.getX(), start.getY(), start.getZ());
+					moveTo(start.getX(), start.getY()-15, start.getZ());
 				}
 				else {
 					position.x = blockLeft - w / 2;
@@ -96,7 +97,7 @@ public class Player extends Camera {
 			}
 			if (b.isPointInCube(position.x, top, position.z)) {// move down
 				if(trapCollision) {
-					moveTo(start.getX(), start.getY(), start.getZ());
+					moveTo(start.getX(), start.getY()-15, start.getZ());
 				}
 				else {
 					position.y = blockBottom + h / 2;
@@ -110,7 +111,7 @@ public class Player extends Camera {
 			if (b.isPointInCube(position.x, position.y, front)) {
 				// move back
 				if(trapCollision) {
-					moveTo(start.getX(), start.getY(), start.getZ());
+					moveTo(start.getX(), start.getY()-15, start.getZ());
 				}
 				else {
 					position.z = blockFront - d / 2;
@@ -118,7 +119,7 @@ public class Player extends Camera {
 			} else if (b.isPointInCube(position.x, position.y, back)) {
 				// move forward
 				if(trapCollision) {
-					moveTo(start.getX(), start.getY(), start.getZ());
+					moveTo(start.getX(), start.getY()-15, start.getZ());
 				}
 				else {
 					position.z = blockBack + d / 2;

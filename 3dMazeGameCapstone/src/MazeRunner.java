@@ -22,9 +22,10 @@ public class MazeRunner extends PApplet {
 		
 		strokeWeight(2);
 		this.frameRate(1000);
-		player = new Player();
-		player.setup(this);
 		maze = new Maze(10);
+		player = new Player(maze.returnStart());
+		player.setup(this);
+		
 		maze.setPlayerAtStart(player);
 		
 	}

@@ -70,4 +70,7 @@ public class Maze {
 	public void setPlayerAtStart(Player player) {
 		player.moveTo(start.getX(), start.getY()-15, start.getZ());
 	}
+	public Block returnStart() {
+		return start;
+	}
 }
