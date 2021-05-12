@@ -11,7 +11,7 @@ public class Main {
 	
 	public static void main(String args[]) {
 		
-		GraphicsPanel drawing = new GraphicsPanel();
+
 		PApplet.main("GraphicsPanel");
 		/*PApplet.runSketch(new String[]{""}, drawing);
 		PSurfaceJOGL surf = (PSurfaceJOGL) drawing.getSurface();
