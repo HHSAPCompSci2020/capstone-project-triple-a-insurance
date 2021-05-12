@@ -8,7 +8,9 @@ public class GraphicsPanel extends PApplet{
 	public GraphicsPanel() {
 		
 	}
-	
+	public void settings() {
+		fullScreen(P3D);
+	}
 	public void setup() {
 		background(255);   // Clear the screen with a white background
 	}
