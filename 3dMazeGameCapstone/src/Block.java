@@ -1,3 +1,5 @@
+import java.awt.Color;
+
 import processing.core.PApplet;
 
 public class Block {
@@ -5,6 +7,7 @@ public class Block {
 	public final int x, y, z;
 	public Maze maze;
 	public char t; // type of block
+	public static final int SIZE = 100;
 	
 	public Block (int x, int y, int z, char t) {
 		this.x = x;
@@ -19,6 +22,11 @@ public class Block {
 	}
 	
 	public void draw (PApplet g) {
+		g.pushMatrix();
+		g.translate(x, y, z);
+		g.fill(200);
+		g.box(SIZE);
+		g.popMatrix();
 		
 	}
 	
