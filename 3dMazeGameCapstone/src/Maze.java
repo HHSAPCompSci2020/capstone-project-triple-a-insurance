@@ -20,25 +20,26 @@ public class Maze {
 				b.add(blocks[i][j]);
 			}
 		}
-		start = blocks[0][0];
-		int row = (int) (random(1, size - 1));
-		int col = (int) (random(1, size - 1));
-		start = blocks[row][col];
-		for (int i = 0; i < size * size * size / 10; i++) {
-		if (!blocks[row][col].getVisited())
-		blocks[row][col].moveDown();
-		blocks[row][col].setVisited(true);
-		if (random(0, 1) < 0.5) {
-		if (random(0, 1) < 0.5 && row > 1)
-		row -= 1;
-		else if (row < size - 2)
-		row += 1;
-		} else {
-		if (random(0, 1) < 0.5 && col > 1)
-		col -= 1;
-		else if (col < size - 2)
-		col += 1;
-		}
+			start = blocks[0][0];
+			int row = (int) (random(1, size - 1));
+			int col = (int) (random(1, size - 1));
+			start = blocks[row][col];
+			for (int i = 0; i < size * size * size / 10; i++) {
+				if (!blocks[row][col].getVisited())
+					blocks[row][col].moveDown();
+				blocks[row][col].setVisited(true);
+				if (random(0, 1) < 0.5) {
+					if (random(0, 1) < 0.5 && row > 1)
+						row -= 1;
+					else if (row < size - 2)
+						row += 1;
+				} 
+				else {
+					if (random(0, 1) < 0.5 && col > 1)
+						col -= 1;
+					else if (col < size - 2)
+						col += 1;
+				}
 		}
 	}
 
