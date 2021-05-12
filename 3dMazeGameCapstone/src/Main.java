@@ -11,10 +11,9 @@ public class Main {
 	
 	public static void main(String args[]) {
 		
-
-		PApplet.main("MazeRunner");
+		PApplet.main("HomeScreen");
 		/*PApplet.runSketch(new String[]{""}, drawing);
-		PSurfaceJOGL surf = (PSurfaceJOGL) drawing.getSurface();
+		PSurfaceAWT surf = (PSurfaceAWT) drawing.getSurface();
 		PSurfaceAWT.SmoothCanvas canvas = (PSurfaceAWT.SmoothCanvas) surf.getNative();
 		JFrame window = (JFrame)canvas.getFrame();
 
