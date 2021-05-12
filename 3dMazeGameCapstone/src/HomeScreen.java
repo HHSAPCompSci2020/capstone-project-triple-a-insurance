@@ -33,4 +33,9 @@ public class HomeScreen extends PApplet{
 		}
 		return false;
 	}
+	
+	
+	public void mousePressed() {
+		
+	}
 }
