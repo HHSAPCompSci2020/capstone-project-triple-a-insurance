@@ -65,7 +65,7 @@ public class Maze {
 				
 				ArrayList<Block> neighbors = getAdj(maze[x][y][z]);
 				
-				count += 1;
+				
 			}
 			
 				
