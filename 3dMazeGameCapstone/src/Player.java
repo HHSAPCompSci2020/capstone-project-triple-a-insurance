@@ -6,6 +6,7 @@ import processing.core.*;
  * 
  * @author asampath803 This class represents the player, a type of camera that
  *         is affected by gravity, collides with blocks
+ *         edits by: Ameya, Aayush
  */
 public class Player extends Camera {
 	private float w, h, d;

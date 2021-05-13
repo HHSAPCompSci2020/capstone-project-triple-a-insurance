@@ -9,7 +9,9 @@ public class MazeRunner extends PApplet {
 
 	private Player player;
 	private Maze maze;
-
+	/**
+	 * makes the screen some size
+	 */
 	public void settings() {
 		size(1000,1000,P3D);
 		
@@ -17,7 +19,9 @@ public class MazeRunner extends PApplet {
 		//super.size(300, 200, P3D);
 		 
 	}
-
+	/**
+	 * sets up the game with a maze and a player in the maze
+	 */
 	public void setup() {
 		
 		strokeWeight(2);
@@ -29,7 +33,9 @@ public class MazeRunner extends PApplet {
 		maze.setPlayerAtStart(player);
 		
 	}
-
+	/**
+	 * draws all the players and sees if the player is moving
+	 */
 	public void draw() {
 		
 		noCursor();
@@ -49,7 +55,10 @@ public class MazeRunner extends PApplet {
 		
 
 	}
-
+	
+	/**
+	 * checks to see the keys that are pressed and checks if menu screen should show up
+	 */
 	public void keyPressed() {
 		if (!checkKey(keyCode))
 			keys.add(keyCode);
@@ -58,13 +67,19 @@ public class MazeRunner extends PApplet {
 			player.jump();
 	}
 
-	// Removes key from array list
+	/**
+	 * removes a key from keyPressed
+	 */
 	public void keyReleased() {
 		while (checkKey(keyCode))
 			keys.remove(new Integer(keyCode));
 	}
 
-	// Checks if given key code is in the array list
+	/**
+	 * checks if the key has already been pressed
+	 * @param i the index
+	 * @return true if it does false if it doesn't
+	 */
 	private boolean checkKey(int i) {
 		return keys.contains(i);
 	}

@@ -1,9 +1,8 @@
 import processing.core.PApplet;
 
 /**
- * 
- * @author asampath803 This class represents a block in 3D space, whether it is
- *         the ground or the wall
+ * creates a trap in a location
+ * @author Aayush
  */
 public class Trap extends Block{
 	private float x, y, z, size;

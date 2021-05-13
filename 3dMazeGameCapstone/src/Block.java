@@ -58,6 +58,25 @@ public class Block {
 
 		return false;
 	}
+	public float getX() {
+		return x;
+	}
+
+	public float getY() {
+		return y;
+	}
+
+	public float getZ() {
+		return z;
+	}
+
+	public float getSize() {
+		return SIZE;
+	}
+	
+	public void moveDown(){
+	    y += 5;
+	}
 	
 	public void setVisited(boolean b) {
 		visited = b;

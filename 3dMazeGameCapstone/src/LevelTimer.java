@@ -1,11 +1,13 @@
-//Author: Aayush Lakhotia
-//Notes: this class is used to set the time for 
-// each level,and it also sets how fast the time decreases
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
-
+/**
+ * Notes: this class is used to set the time for each level,and it also sets how fast the time decreases
+ * @author Aayush
+ *
+ */
 public class LevelTimer {
 	private int timeLeft;
 	Timer currentTimeLeft = new Timer(400, new ActionListener() {
@@ -53,7 +55,6 @@ public class LevelTimer {
 		return displayTime;
 	}
 	
-	//For the ending Time to Points conversion
 	public void decreaseTime() {
 		timeLeft--;
 	}
