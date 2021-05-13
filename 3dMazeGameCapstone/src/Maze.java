@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Set;
 
 import processing.core.PApplet;
 
@@ -21,6 +22,8 @@ public class Maze {
 	private Player p;
 	
 	public Maze (int size) {
+		start = null;
+		end = null;
 		this.size = size;
 		maze = new Block[size][size][size];
 		generate();
@@ -29,56 +32,97 @@ public class Maze {
 	private void generate () {
 		for (int i = 0; i < Math.pow(maze.length, 3); i++) {
 			int x, y, z;
-			x = i/size^2;
-			y = i%size^2/size;
-			z = i%size^2%size;
-			add(new Block (x, y, z, 'w'));
-		}
-		
-		ArrayList<Block> blocks = new ArrayList<Block> ();
-		for (Block[][] b2: maze) {
-			for (Block[] b1: b2) {
-				for (Block b: b1) blocks.add(b);
-			}
+			x = i / (size * size);
+			y = i % (size * size) / size;
+			z = i % (size * size) % size;
+			add(new Block (x, y, z, 'w')); // 'w' means wall
 		}
 		
 		int count = 0;
 		
-		int y, x, z;
-		z = 0;
+		int y, x, z; // x, y and z of current block
+		z = 0; // the starting block will be at z = 0 because that is the bottommost layer
 		x = (int)(Math.random()*(size-2));
 		y = (int)(Math.random()*(size-2));
 		maze[x][y][z].t = ' ';
 		start = maze[x][y][z];
 		
 		while (true) {
-			if (count > 20)
-				for (int i = 0; i < size; i ++)
-					for (int j = 0; j < size; j++)
+			boolean found;
+			ArrayList<Block> ns = null;
+			if (count > 20) {
+				found = false; // indicates whether or not the 
+				for (int i = 0; i < size; i ++) {
+					for (int j = 0; j < size; j++) {
 						for (int k = 0; k < size; k++) {
-							if (maze[i][j][k].t == ' ')
+							boolean go = true; // indicator of whether or not the current block panned out
+							if (maze[i][j][k].t == ' ') // doesn't check if the block is already empty
 								break;
 							ArrayList<Block> neighbors = getAdj(maze[i][j][k]);
+							Block thing = maze[i][j][k];
 							int num = 0;
-							for (Block b : neighbors){
-								if (true) {
-									x = i;
-									y = j;
-									z = k;
+							for (int l = 0; l < neighbors.size()-1; l++) {
+								int m;
+								for (m = l + 1; m < neighbors.size(); m++) {
+									if (!Collections.disjoint(neighbors.get(l).tree, neighbors.get(m).tree)) { // if there is a joint set found, break
+										go = true;
+										break;
+									}
 								}
+								if (go) break; // if there is a joint set found, break
 							}
-						
+							if (!go) {
+								x = i; // x
+								y = j; // y
+								z = k; // z
+								found = true; // if the for loop finds no joint sets between the blocks, it sets found = true, and indicates where to continue process
+							}
+							if (found) break;
 						}
-			else {
+						if (found) break;
+					}
+					if (!found) break; // if nothing is found, the maze is finished
+				}
+			} else {
 				
-				x = (int)(Math.random()*size);
-				y = (int)(Math.random()*size);
-				z = (int)(Math.random()*size);
+				found = false; // found a location to remove wall
+				boolean go = false; // 
+				x = (int)(Math.random() * (size-2)) + 1; // random x to check
+				y = (int)(Math.random() * (size-2)) + 1; // random y to check
+				z = (int)(Math.random() * (size-2)) + 1; // random z to check
 				
-				ArrayList<Block> neighbors = getAdj(maze[x][y][z]);
+				ArrayList<Block> neighbors = getAdj(maze[x][y][z]); // gets the neighbors
+				
+				for (int l = 0; l < neighbors.size(); l++) { // for loop through the neighbors
+					int m;
+					for (m = l; m < neighbors.size(); m++) { // checks the neihbors ahead of it to see if their trees are joint or not
+						if (!Collections.disjoint(neighbors.get(l).tree, neighbors.get(m).tree)) { // if they are not disjoint, the loop breaks
+							go = true;
+							break;
+						}
+					}
+					if (go) break;
+				}
+				if (!go) {
+					found = true;
+					ns = neighbors;
+				}
+				if (!found) count ++;
 				
 			}
 			
+			if (found) {
+				maze[x][y][z].t = ' ';
+				Set<Block> bset = maze[x][y][z].tree;
+				for (Block curr : ns) {
+					for (Block member : curr.tree) {
+						bset.add(member);
+					}
+				}
+				for (Block curr : ns) {
+					curr.tree.addAll(bset);;
+				}
+			}
 				
 		}
 		
