@@ -5,13 +5,14 @@ import javax.swing.JOptionPane;
 
 import processing.awt.PSurfaceAWT;
 import processing.core.PApplet;
+import processing.opengl.PSurfaceJOGL;
 
 public class Main {
 	
 	public static void main(String args[]) {
 		
-		GraphicsPanel drawing = new GraphicsPanel();
-		PApplet.runSketch(new String[]{""}, drawing);
+		PApplet.main("HomeScreen");
+		/*PApplet.runSketch(new String[]{""}, drawing);
 		PSurfaceAWT surf = (PSurfaceAWT) drawing.getSurface();
 		PSurfaceAWT.SmoothCanvas canvas = (PSurfaceAWT.SmoothCanvas) surf.getNative();
 		JFrame window = (JFrame)canvas.getFrame();
@@ -22,7 +23,7 @@ public class Main {
 		window.setResizable(true);
 
 		window.setVisible(true);
-		canvas.requestFocus();
+		canvas.requestFocus();*/
 	}
 
 }

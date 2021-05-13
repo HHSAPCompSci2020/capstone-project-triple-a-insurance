@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
+import processing.core.PApplet;
+
 /**
  * Maze class where the maze is stored to run
  * @author Aayush
@@ -14,6 +16,9 @@ public class Maze {
 	private int EASY = 12;
 	private int MEDIUM = 24;
 	private int HARD = 30;
+	private Block start;
+	private Block end;
+	private Player p;
 	
 	public Maze (int size) {
 		this.size = size;
@@ -43,28 +48,34 @@ public class Maze {
 		z = 0;
 		x = (int)(Math.random()*(size-2));
 		y = (int)(Math.random()*(size-2));
+		maze[x][y][z].t = ' ';
+		start = maze[x][y][z];
 		
 		while (true) {
 			if (count > 20)
 				for (int i = 0; i < size; i ++)
 					for (int j = 0; j < size; j++)
 						for (int k = 0; k < size; k++) {
-							if (maze[i][j][k].t == 'e')
+							if (maze[i][j][k].t == ' ')
 								break;
-							if (true) {
-								x = i;
-								y = j;
-								z = k;
+							ArrayList<Block> neighbors = getAdj(maze[i][j][k]);
+							int num = 0;
+							for (Block b : neighbors){
+								if (true) {
+									x = i;
+									y = j;
+									z = k;
+								}
 							}
 						
 						}
 			else {
+				
 				x = (int)(Math.random()*size);
 				y = (int)(Math.random()*size);
 				z = (int)(Math.random()*size);
 				
 				ArrayList<Block> neighbors = getAdj(maze[x][y][z]);
-				
 				
 			}
 			
@@ -137,4 +148,19 @@ public class Maze {
 		maze[b.x][b.y][b.z] = b;
 	}
 	
+	public void setPlayerAtStart(Player p) {
+		
+	}
+
+	public Block returnStart() {
+		return null;
+	}
+	
+	public void display (PApplet g) {
+		
+	}
+	
+	public void update (Player p) {
+		
+	}
 }
