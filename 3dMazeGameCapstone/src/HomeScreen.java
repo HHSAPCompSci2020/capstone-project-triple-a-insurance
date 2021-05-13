@@ -7,7 +7,7 @@ import processing.core.PImage;
  *
  */
 public class HomeScreen extends PApplet{
-
+	MazeRunner game;
 	PImage backgroundImg;
 	public void settings() {
 		size(1000,1000);
@@ -15,6 +15,7 @@ public class HomeScreen extends PApplet{
 	}
 	public void setup() {
 		backgroundImg = loadImage("MazeGame.jpg");
+		game = new MazeRunner();
 		
 	}
 	public void draw(){
@@ -56,6 +57,8 @@ public class HomeScreen extends PApplet{
 		}
 		if (this.isChosen(mouseX, mouseY, width/4, 3*height/4, width/4+width/2, 3*height/4+height/8)) {
 			System.out.println("play game");
+			
+			PApplet.main("MazeRunner");
 		}
 	}
 }
