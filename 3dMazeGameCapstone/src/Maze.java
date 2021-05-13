@@ -46,15 +46,15 @@ public class Maze {
 		y = (int)(Math.random()*(size-2));
 		maze[x][y][z].t = ' ';
 		start = maze[x][y][z];
-		
+		// DO THE START AND END STUFF
 		while (true) {
 			boolean found;
 			ArrayList<Block> ns = null;
 			if (count > 20) {
 				found = false; // indicates whether or not the 
-				for (int i = 0; i < size; i ++) {
-					for (int j = 0; j < size; j++) {
-						for (int k = 0; k < size; k++) {
+				for (int i = 1; i < size-1; i ++) {
+					for (int j = 1; j < size-1; j++) {
+						for (int k = 1; k < size-1; k++) {
 							boolean go = true; // indicator of whether or not the current block panned out
 							if (maze[i][j][k].t == ' ') // doesn't check if the block is already empty
 								break;
@@ -112,6 +112,7 @@ public class Maze {
 			}
 			
 			if (found) {
+				count = 0;
 				maze[x][y][z].t = ' ';
 				Set<Block> bset = maze[x][y][z].tree;
 				for (Block curr : ns) {
