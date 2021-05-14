@@ -6,10 +6,10 @@ import processing.core.*;
 
 public class MazeRunner extends PApplet {
 	private ArrayList<Integer> keys = new ArrayList<Integer>();
-
+	public int mode;
 	private Player player;
 	private Maze maze;
-	private LevelTimer levelTimeLeft = new LevelTimer(150);
+	private LevelTimer levelTimeLeft = new LevelTimer(120);
 	/**
 	 * makes the screen some size
 	 */
@@ -24,10 +24,16 @@ public class MazeRunner extends PApplet {
 	 * sets up the game with a maze and a player in the maze
 	 */
 	public void setup() {
-		
 		strokeWeight(2);
 		this.frameRate(1000);
-		maze = new Maze(10);
+		if (mode == 0) {
+			levelTimeLeft = new LevelTimer(120);
+			maze = new Maze(12);
+		}
+		else {
+			levelTimeLeft = new LevelTimer(250);
+			maze = new Maze(28);
+		}
 		player = new Player(maze.returnStart());
 		player.setup(this);
 		
