@@ -7,7 +7,7 @@ import processing.core.PApplet;
 
 /**
  * Maze class where the maze is stored to run
- * @author Aayush
+ * @author Abbas
  *
  */
 public class Maze {
@@ -20,6 +20,7 @@ public class Maze {
 	private Block start;
 	private Block end;
 	private Player p;
+	ArrayList<Block> b = new ArrayList<Block>();
 	
 	public Maze (int size) {
 		start = null;
@@ -199,19 +200,26 @@ public class Maze {
 		maze[b.x][b.y][b.z] = b;
 	}
 	
-	public void setPlayerAtStart(Player p) {
-		
+	private double random(double lower, double upper) {
+		return Math.random() * (upper - lower) + lower;
 	}
 
+	public void update(Player p) {
+		p.act(b);
+	}
+
+	public void display(PApplet g) {
+		for (int i = 0; i < maze.length; i++) {
+			for (int j = 0; j < maze[i].length; j++) {
+				maze[i][j][0].display(g);
+			}
+		}
+	}
+
+	public void setPlayerAtStart(Player player) {
+		player.moveTo(start.getX(), start.getY()-15, start.getZ());
+	}
 	public Block returnStart() {
-		return null;
-	}
-	
-	public void display (PApplet g) {
-		
-	}
-	
-	public void update (Player p) {
-		
+		return start;
 	}
 }

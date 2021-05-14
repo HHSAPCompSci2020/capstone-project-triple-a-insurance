@@ -6,24 +6,15 @@ import javax.swing.JOptionPane;
 import processing.awt.PSurfaceAWT;
 import processing.core.PApplet;
 import processing.opengl.PSurfaceJOGL;
-
+/**
+ * Main class that calls the homeScreen first
+ * @author ameya
+ *
+ */
 public class Main {
-	
 	public static void main(String args[]) {
 		
 		PApplet.main("HomeScreen");
-		/*PApplet.runSketch(new String[]{""}, drawing);
-		PSurfaceAWT surf = (PSurfaceAWT) drawing.getSurface();
-		PSurfaceAWT.SmoothCanvas canvas = (PSurfaceAWT.SmoothCanvas) surf.getNative();
-		JFrame window = (JFrame)canvas.getFrame();
-
-		window.setSize(800, 600);
-		window.setMinimumSize(new Dimension(100,100));
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.setResizable(true);
-
-		window.setVisible(true);
-		canvas.requestFocus();*/
 	}
 
 }
