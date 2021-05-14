@@ -46,6 +46,12 @@ public class Maze {
 		y = (int)(Math.random()*(size-2));
 		maze[x][y][z].t = ' ';
 		start = maze[x][y][z];
+		
+		int endx, endy, endz;
+		endx = (int)(Math.random() * (size-2)) + 1; // random y to check
+		endy = (int)(Math.random() * (size-2)) + 1;
+		endz = size-1;
+		maze[endx][endy][endz].t = ' ';
 		// DO THE START AND END STUFF
 		while (true) {
 			boolean found;
