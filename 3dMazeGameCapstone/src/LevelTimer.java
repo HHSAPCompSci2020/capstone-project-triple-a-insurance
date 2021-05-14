@@ -10,7 +10,8 @@ import javax.swing.Timer;
  */
 public class LevelTimer {
 	private int timeLeft;
-	Timer currentTimeLeft = new Timer(400, new ActionListener() {
+	
+	Timer currentTimeLeft = new Timer(timeLeft, new ActionListener() {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -32,8 +33,8 @@ public class LevelTimer {
 		currentTimeLeft.start();		
 
 	}
-	public void restartTimer() {
-		timeLeft = 400;
+	public void restartTimer(int timeLeft) {
+		this.timeLeft = timeLeft;
 	}
 	
 	public void stopTimer() {
