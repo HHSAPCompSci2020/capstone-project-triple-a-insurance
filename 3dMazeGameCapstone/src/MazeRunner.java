@@ -9,11 +9,12 @@ public class MazeRunner extends PApplet {
 
 	private Player player;
 	private Maze maze;
+	private LevelTimer levelTimeLeft = new LevelTimer(150);
 	/**
 	 * makes the screen some size
 	 */
 	public void settings() {
-		size(1000,1000,P3D);
+		size(600,600,P3D);
 		
 		
 		//super.size(300, 200, P3D);
@@ -38,11 +39,13 @@ public class MazeRunner extends PApplet {
 	 */
 	public void draw() {
 		
+		
 		noCursor();
 		background(51);
 		maze.display(this);
 		maze.update(player);
 		player.draw(this);
+		text(levelTimeLeft.timeStartingZeros() + "" + levelTimeLeft.getTimeLeft(), width - 20, 20);
 
 		if (checkKey(KeyEvent.VK_W))
 			player.moveZ(1);
