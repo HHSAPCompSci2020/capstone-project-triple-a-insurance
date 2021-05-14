@@ -9,6 +9,7 @@ import processing.core.PImage;
 public class HomeScreen extends PApplet{
 	MazeRunner game;
 	PImage backgroundImg;
+	private int mode;
 	/**
 	 * sets the size of the project
 	 */
@@ -67,6 +68,10 @@ public class HomeScreen extends PApplet{
 			return true;
 		}
 		return false;
+	}
+	
+	private int getMode() {
+		return mode;
 	}
 	
 	/**
