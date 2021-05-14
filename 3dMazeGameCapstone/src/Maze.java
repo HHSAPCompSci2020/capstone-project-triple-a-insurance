@@ -88,8 +88,9 @@ public class Maze {
 						}
 						if (found) break;
 					}
-					if (!found) break; // if nothing is found, the maze is finished
+					if (found) break;
 				}
+				if (!found) break; // if nothing is found, the maze is finished
 			} else {
 				
 				found = false; // found a location to remove wall
@@ -123,9 +124,7 @@ public class Maze {
 				maze[x][y][z].t = ' ';
 				Set<Block> bset = maze[x][y][z].tree;
 				for (Block curr : ns) {
-					for (Block member : curr.tree) {
-						bset.add(member);
-					}
+					bset.addAll(curr.tree);
 				}
 				for (Block curr : ns) {
 					curr.tree.addAll(bset);;
