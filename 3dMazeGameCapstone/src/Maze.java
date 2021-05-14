@@ -21,10 +21,12 @@ public class Maze {
 	private Block end;
 	private Player p;
 	ArrayList<Block> b = new ArrayList<Block>();
+	private boolean generated;
 	
 	public Maze (int size) {
 		start = null;
 		end = null;
+		generated = false;
 		this.size = size;
 		maze = new Block[size][size][size];
 		generate();
@@ -54,8 +56,10 @@ public class Maze {
 		endz = size-1;
 		maze[endx][endy][endz].t = ' ';
 		// DO THE START AND END STUFF
-		while (true) {
+		int c = 0;
+		while (c < 100000000) {
 			boolean found;
+			c++;
 			ArrayList<Block> ns = null;
 			if (count > 20) {
 				found = false; // indicates whether or not the 
@@ -66,8 +70,6 @@ public class Maze {
 							if (maze[i][j][k].t == ' ') // doesn't check if the block is already empty
 								break;
 							ArrayList<Block> neighbors = getAdj(maze[i][j][k]);
-							Block thing = maze[i][j][k];
-							int num = 0;
 							for (int l = 0; l < neighbors.size()-1; l++) {
 								int m;
 								for (m = l + 1; m < neighbors.size(); m++) {
@@ -90,7 +92,10 @@ public class Maze {
 					}
 					if (found) break;
 				}
-				if (!found) break; // if nothing is found, the maze is finished
+				if (!found) {
+					generated = true;
+					break; // if nothing is found, the maze is finished
+				}
 			} else {
 				
 				found = false; // found a location to remove wall
@@ -220,5 +225,9 @@ public class Maze {
 	}
 	public Block returnStart() {
 		return start;
+	}
+	
+	public boolean generated () {
+		return generated;
 	}
 }
