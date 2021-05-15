@@ -14,7 +14,7 @@ public class HomeScreen extends PApplet{
 	 * sets the size of the project
 	 */
 	public void settings() {
-		size(600,600);
+		size(600, 600);
 
 	}
 	/**

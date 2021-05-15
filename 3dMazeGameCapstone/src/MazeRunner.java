@@ -14,9 +14,8 @@ public class MazeRunner extends PApplet {
 	 * makes the screen some size
 	 */
 	public void settings() {
-		size(600,600,P3D);
-		//super.size(300, 200, P3D);
-		 
+		fullScreen(P3D);
+		
 	}
 	/**
 	 * sets up the game with a maze and a player in the maze
