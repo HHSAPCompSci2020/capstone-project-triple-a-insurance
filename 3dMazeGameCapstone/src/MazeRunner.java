@@ -15,8 +15,6 @@ public class MazeRunner extends PApplet {
 	 */
 	public void settings() {
 		size(600,600,P3D);
-		
-		
 		//super.size(300, 200, P3D);
 		 
 	}
