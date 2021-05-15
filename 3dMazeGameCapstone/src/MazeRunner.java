@@ -6,7 +6,7 @@ import processing.core.*;
 
 public class MazeRunner extends PApplet {
 	private ArrayList<Integer> keys = new ArrayList<Integer>();
-	public int mode;
+	public int mode = 0;
 	private Player player;
 	private Maze maze;
 	private LevelTimer levelTimeLeft = new LevelTimer(120);

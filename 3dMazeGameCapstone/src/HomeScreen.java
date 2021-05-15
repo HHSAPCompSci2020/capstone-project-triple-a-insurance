@@ -22,7 +22,7 @@ public class HomeScreen extends PApplet{
 	 */
 	public void setup() {
 		backgroundImg = loadImage("MazeGame.jpg");
-		
+		game = new MazeRunner();
 	}
 	
 	
