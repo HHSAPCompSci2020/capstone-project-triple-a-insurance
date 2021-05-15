@@ -11,13 +11,6 @@ public class HomeScreen extends PApplet{
 	PImage backgroundImg;
 	private int mode;
 	/**
-	 * sets the size of the project
-	 */
-	public void settings() {
-		size(600, 600);
-
-	}
-	/**
 	 * loads in all the images and creates the mazerunner
 	 */
 	public void setup() {
