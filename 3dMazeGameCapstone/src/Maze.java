@@ -98,6 +98,7 @@ public class Maze {
 				}
 			} else {
 				
+				count = 0;
 				found = false; // found a location to remove wall
 				boolean go = false; // 
 				x = (int)(Math.random() * (size-2)) + 1; // random x to check
@@ -181,15 +182,6 @@ public class Maze {
 		
 	}
 	
-	public void addToList (ArrayList<Block> b, Block i, int depth) {
-		if (depth == 0) return;
-		if (!b.contains(i)) b.add(i);
-		ArrayList<Block> neighbors = getAdj (i);
-		for (Block n: neighbors) {
-			addToList(b, n, depth-1);
-		}
-	}
-	
 	public ArrayList<Block> getAdj (Block b) {
 		ArrayList<Block> neighbors = new ArrayList<Block> ();
 		for (int i = Math.max(b.x-1, 0); i < Math.min(19, b.x+1); i++)
@@ -229,5 +221,13 @@ public class Maze {
 	
 	public boolean generated () {
 		return generated;
+	}
+	
+	public Block getStart ( ) {
+		return start;
+	}
+	
+	public Block getEnd () {
+		return end;
 	}
 }
