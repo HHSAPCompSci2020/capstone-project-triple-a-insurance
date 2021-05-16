@@ -14,7 +14,7 @@ public class MazeRunner extends PApplet {
 	 * makes the screen some size
 	 */
 	public void settings() {
-		fullScreen(P3D);
+		size(1000,1000,P3D);
 		
 	}
 	/**

@@ -127,7 +127,6 @@ public class Player extends Camera {
 				}
 			}
 		}
-		velocity.y += gravity;
 
 	}
 
