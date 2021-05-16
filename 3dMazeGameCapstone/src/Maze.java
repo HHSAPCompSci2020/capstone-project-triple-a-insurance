@@ -84,89 +84,13 @@ public class Maze {
 				join(curr); // Joins all of the sets, changes the type of the block.
 			}
 		}
-		/*int c = 0;
-		while (c < 100000000) {
-			boolean found;
-			c++;
-			ArrayList<Block> ns = null;
-			if (count > 20) {
-				found = false; // indicates whether or not the 
-				for (int i = 1; i < size-1; i ++) {
-					for (int j = 1; j < size-1; j++) {
-						for (int k = 1; k < size-1; k++) {
-							boolean go = true; // indicator of whether or not the current block panned out
-							if (maze[i][j][k].t == ' ') // doesn't check if the block is already empty
-								break;
-							ArrayList<Block> neighbors = getAdj(maze[i][j][k]); // adjacent cells to check
-							for (int l = 0; l < neighbors.size()-1; l++) { // iterates through the cells to find 
-								int m;
-								for (m = l + 1; m < neighbors.size(); m++) {
-									if (!Collections.disjoint(neighbors.get(l).tree, neighbors.get(m).tree)) { // if there is a joint set found, break
-										go = true;
-										break;
-									}
-								}
-								if (go) break; // if there is a joint set found, break
-							}
-							if (!go) {
-								x = i; // x
-								y = j; // y
-								z = k; // z
-								found = true; // if the for loop finds no joint sets between the blocks, it sets found = true, and indicates where to continue process
-							}
-							if (found) break;
-						}
-						if (found) break;
-					}
-					if (found) break;
-				}
-				if (!found) {
-					generated = true;
-					break; // if nothing is found, the maze is finished
-				}
-			} else {
-				
-				found = false; // found a location to remove wall
-				boolean go = false; // 
-				x = (int)(Math.random() * (size-2)) + 1; // random x to check
-				y = (int)(Math.random() * (size-2)) + 1; // random y to check
-				z = (int)(Math.random() * (size-2)) + 1; // random z to check
-				
-				ArrayList<Block> neighbors = getAdj(maze[x][y][z]); // gets the neighbors
-				
-				for (int l = 0; l < neighbors.size(); l++) { // for loop through the neighbors
-					int m;
-					for (m = l; m < neighbors.size(); m++) { // checks the neighbors ahead of it to see if their trees are joint or not
-						if (!Collections.disjoint(neighbors.get(l).tree, neighbors.get(m).tree)) { // if they are not disjoint, the loop breaks
-							go = true;
-							break;
-						}
-					}
-					if (go) break;
-				}
-				if (!go) {
-					found = true;
-					count = 0;
-					ns = neighbors;
-				}
-				if (!found) count ++;
-				c++;
+		for (int i = 0; i < size * size; i++) {
+			System.out.print(get(0, i / size, i % size));
+			if ((i+1)%size == 0) {
 				
 			}
-			
-			if (found) {
-				count = 0;
-				maze[x][y][z].t = ' ';
-				Set<Block> bset = maze[x][y][z].tree;
-				for (Block curr : ns) {
-					bset.addAll(curr.tree);
-				}
-				for (Block curr : ns) {
-					curr.tree.addAll(bset);;
-				}
-			}
-				
-		}*/
+		}
+		
 		
 		
 	}
