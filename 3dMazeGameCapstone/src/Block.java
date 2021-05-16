@@ -15,7 +15,7 @@ public class Block {
 	public int x, y, z;
 	public Maze maze;
 	public char t; // type of block, wall if 'w', empty if ' '
-	public static final int SIZE = 5;
+	public static final int SIZE = 10;
 	public boolean visited;
 	public Set<Block> tree; // Set of all blocks that are connected
 	
@@ -32,7 +32,7 @@ public class Block {
 		if (t == 'w') {
 			g.pushMatrix();
 			g.translate(x*SIZE, y*SIZE, z*SIZE);
-			g.fill(100, 255, 100, 1);
+			g.fill(100, 255, 100);
 			g.box(SIZE);
 			g.popMatrix();
 		}

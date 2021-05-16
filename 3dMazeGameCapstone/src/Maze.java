@@ -133,7 +133,9 @@ public class Maze {
 	public void display(PApplet g) {
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
-				get(i, j, 0).display(g);
+				for (int z = 0; z <size; z++) {
+					get(i, j, z).display(g);
+				}
 			}
 		}
 	}
