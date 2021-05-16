@@ -6,27 +6,31 @@ import processing.core.*;
 
 public class MazeRunner extends PApplet {
 	private ArrayList<Integer> keys = new ArrayList<Integer>();
-
+	public int mode = 0;
 	private Player player;
 	private Maze maze;
+	private LevelTimer levelTimeLeft = new LevelTimer(120);
 	/**
 	 * makes the screen some size
 	 */
 	public void settings() {
-		size(1000,1000,P3D);
+		fullScreen(P3D);
 		
-		
-		//super.size(300, 200, P3D);
-		 
 	}
 	/**
 	 * sets up the game with a maze and a player in the maze
 	 */
 	public void setup() {
-		
 		strokeWeight(2);
 		this.frameRate(1000);
-		maze = new Maze(10);
+		if (mode == 0) {
+			levelTimeLeft = new LevelTimer(120);
+			maze = new Maze(12);
+		}
+		else {
+			levelTimeLeft = new LevelTimer(250);
+			maze = new Maze(28);
+		}
 		player = new Player(maze.returnStart());
 		player.setup(this);
 		
@@ -38,11 +42,13 @@ public class MazeRunner extends PApplet {
 	 */
 	public void draw() {
 		
+		
 		noCursor();
 		background(51);
 		maze.display(this);
 		maze.update(player);
 		player.draw(this);
+		text(levelTimeLeft.timeStartingZeros() + "" + levelTimeLeft.getTimeLeft(), width - 20, 20);
 
 		if (checkKey(KeyEvent.VK_W))
 			player.moveZ(1);
