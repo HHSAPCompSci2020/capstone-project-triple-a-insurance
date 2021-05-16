@@ -70,16 +70,18 @@ public class Maze {
 				if (neighbors.get(i).t == ' ') {
 					for (int j = i; j < neighbors.size(); i++) {
 						if (neighbors.get(j).t == ' ')
-						if (!Collections.disjoint(neighbors.get(i).tree, neighbors.get(j).tree));
-						isJoint = true;
+						if (Collections.disjoint(neighbors.get(i).tree, neighbors.get(j).tree)) {
+							isJoint = true;
+							break;
+						}
 					}
 				}
-				if (!isJoint) {
+				if (isJoint) { // Even if it doesn't matter too much, don't want to spend a bunch of time iterating through the stuff unless I have too.
 					break;
 				}
 			}
-			if (isJoint) {
-				join(curr); 		// Joins all of the sets, changes the type of the block.
+			if (!isJoint) {
+				join(curr); // Joins all of the sets, changes the type of the block.
 			}
 		}
 		/*int c = 0;
