@@ -131,10 +131,8 @@ public class Maze {
 	}
 
 	public void display(PApplet g) {
-		for (int i = 0; i < size; i++) {
-			for (int j = 0; j < size; j++) {
-				get(i, j, 0).display(g);
-			}
+		for (Block b : maze) {
+			b.display(g);
 		}
 	}
 
@@ -145,6 +143,7 @@ public class Maze {
 	public void setPlayerAtStart(Player player) {
 		player.moveTo(start.getX(), start.getY()-15, start.getZ());
 	}
+	
 	public Block returnStart() {
 		return start;
 	}
