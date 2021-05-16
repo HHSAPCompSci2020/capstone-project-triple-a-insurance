@@ -14,17 +14,17 @@ public class Block {
 	private int fillColor;
 	public int x, y, z;
 	public Maze maze;
-	public char t; // type of block
+	public char t; // type of block, wall if 'w', empty if ' '
 	public static final int SIZE = 200;
 	public boolean visited;
-	public Set<Block> tree;
+	public Set<Block> tree; // Set of all blocks that are connected
 	
 	public Block (int x, int y, int z, char t) {
 		this.x = x;
 		this.y = y;
 		this.z = z;
 		this.t = t;
-		tree = new HashSet<Block>();
+		tree = new HashSet<Block>(); // initializing the maze
 		tree.add(this);
 	}
 	
