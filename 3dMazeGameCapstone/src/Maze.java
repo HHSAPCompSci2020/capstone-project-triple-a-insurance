@@ -68,7 +68,7 @@ public class Maze {
 			boolean isJoint = false;
 			for (int i = 0; i < neighbors.size()-1 && !isJoint; i++) {
 				if (neighbors.get(i).t == ' ') {
-					for (int j = i; j < neighbors.size(); i++) {
+					for (int j = i; j < neighbors.size(); j++) {
 						if (neighbors.get(j).t == ' ')
 						if (Collections.disjoint(neighbors.get(i).tree, neighbors.get(j).tree)) {
 							isJoint = true;
