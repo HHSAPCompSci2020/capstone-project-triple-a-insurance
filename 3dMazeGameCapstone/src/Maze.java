@@ -193,7 +193,7 @@ public class Maze {
 		for (Block neighbor: neighbors) { // For each member of the block's tree, makes sure that the tree is shared over all of it's members.
 			Set<Block> neighborTree = neighbor.tree; // The neighbor's tree
 			for (Block member : neighborTree) { // Iterates through all of the members of the tree.
-				member.tree = b.tree; // Sets the trees of the members to the shared tree.
+				member.tree = b.tree; // Sets the trees of the members to the shared tree. 
 			}
 		}
 	}

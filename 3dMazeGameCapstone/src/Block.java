@@ -28,11 +28,6 @@ public class Block {
 		tree.add(this);
 	}
 	
-	public void add (Maze maze) {
-		this.maze = maze;
-		maze.add(this);
-	}
-	
 	public void display(PApplet g) {
 		if (t == 'w') {
 			g.pushMatrix();
