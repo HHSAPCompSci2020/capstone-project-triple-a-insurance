@@ -146,9 +146,8 @@ public class Maze {
 	}
 
 	public void display(PApplet g) { // this needs to be changed to a smaller radius to avoid unecessary computations.
-		for (Block b : maze) {
+		for (Block b : maze)
 			b.display(g);
-		}
 	}
 
 	public Block get (int x, int y, int z) {
