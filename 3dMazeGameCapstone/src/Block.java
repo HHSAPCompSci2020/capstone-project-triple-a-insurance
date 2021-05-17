@@ -24,29 +24,28 @@ public class Block {
 		this.y = y;
 		this.z = z;
 		this.t = t;
-		tree = new HashSet<Block>(); // initializing the maze
+		tree = new HashSet<Block> (); // initializing the maze
 		tree.add(this);
 	}
 	
 	public void display(PApplet g) {
-		if (t == 'w') {
 			g.pushMatrix();
 			g.translate(x*SIZE, y*SIZE, z*SIZE);
-			g.fill(100, 255, 100, 1);
+			g.fill(100, ((t== ' ')? 0: 255), 100);
 			g.box(SIZE);
 			g.popMatrix();
-		}
+		
 	}
 
 	public boolean isPointInCube(float x, float y, float z) {
 		// the x y z coords of the block are in the center so +/- by size/2 in all
 		// directions to get the edges
-		float left = this.x - SIZE / 2;
-		float right = this.x + SIZE / 2;
-		float top = this.y - SIZE / 2;
-		float bottom = this.y + SIZE / 2;
-		float front = this.z - SIZE / 2;
-		float back = this.z + SIZE / 2;
+		float left = this.x*5 - SIZE / 2;
+		float right = this.x*5 + SIZE / 2;
+		float top = this.y*5 - SIZE / 2;
+		float bottom = this.y*5 + SIZE / 2;
+		float front = this.z*5 - SIZE / 2;
+		float back = this.z*5 + SIZE / 2;
 		if (x > left && x < right && y > top && y < bottom && z > front && z < back) {
 			return true;
 		}

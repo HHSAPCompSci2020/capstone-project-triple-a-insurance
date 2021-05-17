@@ -12,6 +12,7 @@ import processing.core.PApplet;
  */
 public class Maze {
 	
+	private int flags = 0;
 	private int size;
 	private ArrayList<Block> maze;
 	private int EASY = 12;
@@ -34,20 +35,19 @@ public class Maze {
 	
 	private void generate () {
 		
-		ArrayList<Integer[]> toCheck = new ArrayList<Integer[]> ();
+		ArrayList<Integer[]> copyToCheck = new ArrayList<Integer[]> ();
 		for (int i = 0; i < Math.pow(size, 3); i++) { // Filling up the maze with blocks
 			int x, y, z;
 			x = i / (size * size);
 			y = i % (size * size) / size;
 			z = i % (size * size) % size;
 			maze.add(new Block (x, y, z, 'w')); // 'w' means wall
-			if (Math.min(x, Math.max(y, z)) > 0 && Math.max(x, Math.max(y,z)) < size-1) { // checks if the coordinates are within the smaller cube that is below the first layer.
-				toCheck.add(new Integer[] { x, y, z });	// the Block coords left to check
+			if (x > 0 && y > 0 && z > 0 && x < size-1 && y < size-1 && z < size-1) { // checks if the coordinates are within the smaller cube that is below the first layer.
+				copyToCheck.add(new Integer[] { x, y, z });	// the Block coords left to check
 			}
 		}
 		
-		Collections.shuffle(toCheck); // Randomizes the order of the Array of coordinates to check.
-		
+		flag();
 		int y, x, z; // x, y and z of current block
 		z = 0; // the starting block will be at z = 0 because that is the bottom-most layer
 		x = (int)(Math.random()*(size-2))+1;
@@ -62,32 +62,45 @@ public class Maze {
 		end = get(x, y, z);
 		end.t = ' ';
 		
-		for (Integer[] coords : toCheck) {
-			Block curr = get(coords[0], coords[1], coords[2]);
-			ArrayList<Block> neighbors = getAdj(curr);
-			boolean isJoint = false;
-			for (int i = 0; i < neighbors.size()-1 && !isJoint; i++) {
-				if (neighbors.get(i).t == ' ') {
-					for (int j = i; j < neighbors.size(); j++) {
-						if (neighbors.get(j).t == ' ')
-						if (Collections.disjoint(neighbors.get(i).tree, neighbors.get(j).tree)) {
-							isJoint = true;
-							break;
+		ArrayList<Integer[]> toCheck;
+		flag();
+		boolean removed = true;
+		while (removed) {
+			flag();
+			removed = false;
+			toCheck = new ArrayList<Integer[]> ();
+			toCheck.addAll(copyToCheck);
+			Collections.shuffle(toCheck); // Randomizes the order of the Array of coordinates to check.
+			
+			for (Integer[] coords : toCheck) {
+				Block curr = get(coords[0], coords[1], coords[2]);
+				ArrayList<Block> neighbors = getAdj(curr);
+				boolean isJoint = false;
+				for (int i = 0; i < neighbors.size()-1 && !isJoint; i++) {
+					if (neighbors.get(i).t == ' ') {
+						for (int j = i; j < neighbors.size(); j++) {
+							if (neighbors.get(j).t == ' ')
+								if (!Collections.disjoint(neighbors.get(i).tree, neighbors.get(j).tree)) {
+									isJoint = true;
+									break;
+								}
 						}
 					}
+					if (isJoint) { // Even if it doesn't matter too much, don't want to spend a bunch of time iterating through the stuff unless I have too.
+						break;
+					}
 				}
-				if (isJoint) { // Even if it doesn't matter too much, don't want to spend a bunch of time iterating through the stuff unless I have too.
-					break;
+				if (!isJoint) {
+					removed = true;
+					copyToCheck.remove(coords);
+					join(curr); // Joins all of the sets, changes the type of the block.
 				}
-			}
-			if (!isJoint) {
-				join(curr); // Joins all of the sets, changes the type of the block.
 			}
 		}
-		for (int i = 0; i < size * size; i++) {
-			System.out.print(get(0, i / size, i % size));
+		for (int i = 1; i < size * size; i++) {
+			System.out.print(get(0, i / size, i % size).t);
 			if ((i+1)%size == 0) {
-				
+				System.out.println();
 			}
 		}
 		
@@ -106,6 +119,10 @@ public class Maze {
 		return neighbors;
 	}
 	
+	private void flag () {
+		System.out.println(++flags);
+	}
+	
 	private void join (Block b) {
 		b.t = ' '; // Changes the type of the block
 		ArrayList<Block> neighbors = getAdj(b); // All of the neighbors.
@@ -114,11 +131,9 @@ public class Maze {
 				b.tree.addAll(neighbor.tree); // If it isn't a wall, it adds all of the members of the trees of the neighbors it used to separate.
 			}
 		}
-		for (Block neighbor: neighbors) { // For each member of the block's tree, makes sure that the tree is shared over all of it's members.
-			Set<Block> neighborTree = neighbor.tree; // The neighbor's tree
-			for (Block member : neighborTree) { // Iterates through all of the members of the tree.
-				member.tree = b.tree; // Sets the trees of the members to the shared tree. 
-			}
+		
+		for (Block member : b.tree) { // Iterates through all of the members of the tree.
+			if (member.t == ' ') member.tree = b.tree; // Sets the trees of the members to the shared tree. 
 		}
 	}
 	
@@ -130,7 +145,7 @@ public class Maze {
 		p.act(b);
 	}
 
-	public void display(PApplet g) {
+	public void display(PApplet g) { // this needs to be changed to a smaller radius to avoid unecessary computations.
 		for (Block b : maze) {
 			b.display(g);
 		}
@@ -141,6 +156,7 @@ public class Maze {
 	}
 	
 	public void setPlayerAtStart(Player player) {
+		p = player;
 		player.moveTo(start.getX(), start.getY()-15, start.getZ());
 	}
 	
