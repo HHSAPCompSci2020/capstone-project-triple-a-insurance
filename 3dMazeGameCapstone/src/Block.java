@@ -41,12 +41,12 @@ public class Block {
 	public boolean isPointInCube(float x, float y, float z) {
 		// the x y z coords of the block are in the center so +/- by size/2 in all
 		// directions to get the edges
-		float left = this.x*5 - SIZE / 2;
-		float right = this.x*5 + SIZE / 2;
-		float top = this.y*5 - SIZE / 2;
-		float bottom = this.y*5 + SIZE / 2;
-		float front = this.z*5 - SIZE / 2;
-		float back = this.z*5 + SIZE / 2;
+		float left = this.x - SIZE / 2;
+		float right = this.x + SIZE / 2;
+		float top = this.y - SIZE / 2;
+		float bottom = this.y + SIZE / 2;
+		float front = this.z - SIZE / 2;
+		float back = this.z + SIZE / 2;
 		if (x > left && x < right && y > top && y < bottom && z > front && z < back) {
 			return true;
 		}
