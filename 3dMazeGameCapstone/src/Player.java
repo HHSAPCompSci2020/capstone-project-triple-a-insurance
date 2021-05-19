@@ -69,12 +69,12 @@ public class Player extends Camera {
 			// dimensions/2 to get the edges
 			float blockSize = b.SIZE;
 			float blockHeight = b.SIZE;
-			float blockLeft = b.x - blockSize / 2;
-			float blockRight = b.x + blockSize / 2;
-			float blockTop = b.y - blockHeight / 2;
-			float blockBottom = b.y + blockHeight / 2;
-			float blockFront = b.z - blockSize / 2;
-			float blockBack = b.z + blockSize / 2;
+			float blockLeft = b.SIZE - blockSize / 2;
+			float blockRight = b.SIZE + blockSize / 2;
+			float blockTop = b.SIZE - blockHeight / 2;
+			float blockBottom = b.SIZE + blockHeight / 2;
+			float blockFront = b.SIZE - blockSize / 2;
+			float blockBack = b.SIZE + blockSize / 2;
 			if(b instanceof Trap) {
 				trapCollision = true;
 			}
