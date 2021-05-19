@@ -41,12 +41,13 @@ public class Maze {
 			x = i / (size * size); // Get the x, y, and z
 			y = i % (size * size) / size;
 			z = i % (size * size) % size;
+			// spaces each block out by 1
 			if (x%2 == 1 && y%2 == 1 && z%2 == 1) {
 				maze.add(new Block (x, y, z, ' ')); // 'w' means wall
 				
 			} else {
 				maze.add(new Block (x, y, z, 'w'));
-				if (x > 0 && y > 0 && z > 0 && x < size-1 && y < size-1 && z < size-1)
+				if (x > 0 && y > 0 && z > 0 && x < size-1 && y < size-1 && z < size-1) // if the blocks are within the outer shell, add the blocks to the list of walls to check
 					copyToCheck.add(new Integer[] {x, y, z});
 			}
 			//if (x > 0 && y > 0 && z > 0 && x < size-1 && y < size-1 && z < size-1) { // checks if the coordinates are within the smaller cube that is below the first layer.
@@ -77,15 +78,15 @@ public class Maze {
 			Collections.shuffle(toCheck); // Randomizes the order of the list of coordinates to check.
 			
 			for (Integer[] coords : toCheck) {
-				Block curr = get(coords[0], coords[1], coords[2]);
-				ArrayList<Block> neighbors = getAdj(curr);
-				boolean isJoint = false;
-				if (whiteSpaces(neighbors) > 1) {
-					for (int i = 0; i < neighbors.size() - 1 && !isJoint; i++) {
+				Block curr = get(coords[0], coords[1], coords[2]); // current block
+				ArrayList<Block> neighbors = getAdj(curr); // gets adjacent blocks
+				boolean isJoint = false; // Are the sets of the adjacent blocks joint
+				if (whiteSpaces(neighbors) > 1) { // If there are more whitespace neighbors than one do this
+					for (int i = 0; i < neighbors.size() - 1 && !isJoint; i++) { // checks if there are any whitespace neighbors that have shared sets
 						if (neighbors.get(i).t == ' ') {
 							for (int j = i; j < neighbors.size(); j++) {
 								if (neighbors.get(j).t == ' ')
-									if (!disjoint(neighbors.get(i).tree, neighbors.get(j).tree)) {
+									if (neighbors.get(i).tree == neighbors.get(j).tree) { // if the sets are the same, exit
 										isJoint = true;
 										break;
 									}
@@ -112,11 +113,11 @@ public class Maze {
 		}
 		
 		
-		start.t = ' ';
+		start.t = ' '; // sets the type of the start and end blocks
 		end.t = ' ';
 	}
 	
-	public ArrayList<Block> getAdj (Block b) {
+	public ArrayList<Block> getAdj (Block b) { // gets the adjacent blocks
 		ArrayList<Block> neighbors = new ArrayList<Block> ();
 		if (b.x+1 < size) neighbors.add(get(b.x+1, b.y, b.z));
 		if (b.x-1 > -1) neighbors.add(get(b.x-1, b.y, b.z));
@@ -144,7 +145,7 @@ public class Maze {
 		b.t = ' ';
 	}
 	
-	private int whiteSpaces(ArrayList<Block> neighbors) {
+	private int whiteSpaces(ArrayList<Block> neighbors) { // gets number of whitespace neighbors
 		int c = 0;
 		for (Block b : neighbors)
 			if (b.t == ' ') c++;
@@ -176,7 +177,6 @@ public class Maze {
 	}
 	
 	public void setPlayerAtStart(Player player) {
-		p = player;
 		player.moveTo(start.getX(), start.getY()-15, start.getZ());
 	}
 	
