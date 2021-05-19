@@ -20,7 +20,7 @@ public class Maze {
 	private int HARD = 30;
 	private Block start;
 	private Block end;
-	private Player p;
+	//private Player p;
 	ArrayList<Block> b = new ArrayList<Block>();
 	private boolean generated;
 	
@@ -156,7 +156,8 @@ public class Maze {
 	}
 	
 	public void setPlayerAtStart(Player player) {
-		p = player;
+		System.out.println("Yeet the player");
+		//p = player;
 		player.moveTo(start.getX(), start.getY()-15, start.getZ());
 	}
 	

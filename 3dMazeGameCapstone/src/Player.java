@@ -11,9 +11,9 @@ import processing.core.*;
 public class Player extends Camera {
 	private float w, h, d;
 	private boolean grounded;
-	private float gravity;
+	//private float gravity;
 	private boolean trapCollision = false;
-	private int ix, iy, iz;
+	//private int ix, iy, iz;
 	private Block start;
 
 	public Player(Block start) {
@@ -42,7 +42,7 @@ public class Player extends Camera {
 		this.h = h;
 		this.d = d;
 		grounded = true;
-		gravity = 0.06f;
+		//gravity = 0.06f;
 	}
 
 	/**
@@ -60,7 +60,7 @@ public class Player extends Camera {
 			// position is in the center of the player so you have to
 			// add/substract
 			// its (dimension in axis)/2 to get the edges
-			System.out.println("" + position.x + " "+ position.y + " " +position.z);
+			//System.out.println("" + position.x + " "+ position.y + " " +position.z);
 			float left = position.x - w / 2;
 			float right = position.x + w / 2;
 			float top = position.y - h / 2;
@@ -161,6 +161,7 @@ public class Player extends Camera {
 	 * @param z z-coordinate of where to move the player
 	 */
 	public void moveTo(float x, float y, float z) {
+		System.out.println("Yeet player");
 		this.getPosition().x = x;
 		this.getPosition().y = y;
 		this.getPosition().z = z;
