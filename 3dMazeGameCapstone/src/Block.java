@@ -29,13 +29,14 @@ public class Block {
 	}
 	
 	public void display(PApplet g) {
+		if (t == ' ') {
 			g.pushMatrix();
 			g.translate(x*SIZE, y*SIZE, z*SIZE);
-			g.fill(100, ((t== ' ')? 0: 255), 100);
+			g.fill(100, (255), 100);
 			g.fill(100, 255, 100);
 			g.box(SIZE);
 			g.popMatrix();
-		
+		}
 	}
 
 	public boolean isPointInCube(float x, float y, float z) {

@@ -38,7 +38,7 @@ public class Maze {
 		ArrayList<Integer[]> copyToCheck = new ArrayList<Integer[]> ();
 		for (int i = 0; i < Math.pow(size, 3); i++) { // Filling up the maze with blocks
 			int x, y, z;
-			x = i / (size * size);
+			x = i / (size * size); // Get the x, y, and z
 			y = i % (size * size) / size;
 			z = i % (size * size) % size;
 			maze.add(new Block (x, y, z, 'w')); // 'w' means wall
@@ -55,7 +55,7 @@ public class Maze {
 		start = get(x, y, z);
 		start.t = ' ';
 		
-		int endx, endy, endz;
+		int endx, endy, endz; // x, y and z of end block
 		endx = (int)(Math.random() * ((size-2)/2)) + 1; 
 		endy = (int)(Math.random() * ((size-2)/2)) + 1;
 		endz = size-1;
@@ -64,13 +64,13 @@ public class Maze {
 		
 		ArrayList<Integer[]> toCheck;
 		flag();
-		boolean removed = true;
-		while (removed) {
+		boolean removed;
+		do {
 			flag();
 			removed = false;
 			toCheck = new ArrayList<Integer[]> ();
 			toCheck.addAll(copyToCheck);
-			Collections.shuffle(toCheck); // Randomizes the order of the Array of coordinates to check.
+			Collections.shuffle(toCheck); // Randomizes the order of the list of coordinates to check.
 			
 			for (Integer[] coords : toCheck) {
 				Block curr = get(coords[0], coords[1], coords[2]);
@@ -96,7 +96,8 @@ public class Maze {
 					join(curr); // Joins all of the sets, changes the type of the block.
 				}
 			}
-		}
+		} while (removed);
+		
 		for (int i = 1; i < size * size; i++) {
 			System.out.print(get(0, i / size, i % size).t);
 			if ((i+1)%size == 0) {
