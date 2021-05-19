@@ -86,7 +86,7 @@ public class Maze {
 						if (neighbors.get(i).t == ' ') {
 							for (int j = i; j < neighbors.size(); j++) {
 								if (neighbors.get(j).t == ' ')
-									if (neighbors.get(i).tree == neighbors.get(j).tree) { // if the sets are the same, exit
+									if (neighbors.get(i).tree.equals(neighbors.get(j).tree)) { // if the sets are the same, exit
 										isJoint = true;
 										break;
 									}
