@@ -54,10 +54,13 @@ public class Player extends Camera {
 	public void act(ArrayList<Block> blocks) {
 		PVector position = getPosition();
 		PVector velocity = getVelocity();
+		//System.out.println("inAct " + blocks.size());
 		for (Block b : blocks) {
-			// position is in the center of the so you have to
+			//System.out.println("inLoop");
+			// position is in the center of the player so you have to
 			// add/substract
 			// its (dimension in axis)/2 to get the edges
+			System.out.println("" + position.x + " "+ position.y + " " +position.z);
 			float left = position.x - w / 2;
 			float right = position.x + w / 2;
 			float top = position.y - h / 2;
@@ -67,14 +70,14 @@ public class Player extends Camera {
 			// block position is in the center of the block so
 			// you have to add/substract its
 			// dimensions/2 to get the edges
-			float blockSize = b.SIZE;
-			float blockHeight = b.SIZE;
-			float blockLeft = b.SIZE - blockSize / 2;
-			float blockRight = b.SIZE + blockSize / 2;
-			float blockTop = b.SIZE - blockHeight / 2;
-			float blockBottom = b.SIZE + blockHeight / 2;
-			float blockFront = b.SIZE - blockSize / 2;
-			float blockBack = b.SIZE + blockSize / 2;
+			float blockSize = b.getSize();
+			float blockHeight = b.getSize();
+			float blockLeft = b.getX() - blockSize / 2;
+			float blockRight = b.getX() + blockSize / 2;
+			float blockTop = b.getY() - blockHeight / 2;
+			float blockBottom = b.getY() + blockHeight / 2;
+			float blockFront = b.getZ() - blockSize / 2;
+			float blockBack = b.getZ() + blockSize / 2;
 			if(b instanceof Trap) {
 				trapCollision = true;
 			}
