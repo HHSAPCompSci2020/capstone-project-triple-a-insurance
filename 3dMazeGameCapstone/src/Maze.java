@@ -20,7 +20,7 @@ public class Maze {
 	private int HARD = 30;
 	private Block start;
 	private Block end;
-	private Player p;
+	//private Player p;
 	ArrayList<Block> b = new ArrayList<Block>();
 	private boolean generated;
 	
