@@ -157,7 +157,7 @@ public class Maze {
 	}
 
 	public void update(Player p) {
-		p.act(b);
+		p.act(maze);
 	}
 
 	public void display(PApplet g) { // this needs to be changed to a smaller radius to avoid unecessary computations.
