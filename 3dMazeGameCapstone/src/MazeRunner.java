@@ -25,7 +25,7 @@ public class MazeRunner extends PApplet {
 		this.frameRate(1000);
 		if (mode == 0) {
 			levelTimeLeft = new LevelTimer(120);
-			maze = new Maze(12);
+			maze = new Maze(13);
 		}
 		else {
 			levelTimeLeft = new LevelTimer(250);
@@ -58,6 +58,9 @@ public class MazeRunner extends PApplet {
 			player.moveX(1);
 		else if (checkKey(KeyEvent.VK_D))
 			player.moveX(-1);
+		if (checkKey(KeyEvent.VK_B)) {
+			
+		}
 		
 
 	}

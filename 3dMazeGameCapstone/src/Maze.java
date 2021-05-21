@@ -47,15 +47,17 @@ public class Maze {
 				
 			} else {
 				maze.add(new Block (x, y, z, 'w'));
-				if (x > 0 && y > 0 && z > 0 && x < size-1 && y < size-1 && z < size-1) // if the blocks are within the outer shell, add the blocks to the list of walls to check
+				if (x > 0 && y > 0 && z > 0 && x < size-1 && y < size-1 && z < size-1) { // if the blocks are within the outer shell, add the blocks to the list of walls to check
 					copyToCheck.add(new Integer[] {x, y, z});
+				} else {
+					get (x, y, z).t = ' ';
+				}
 			}
 			//if (x > 0 && y > 0 && z > 0 && x < size-1 && y < size-1 && z < size-1) { // checks if the coordinates are within the smaller cube that is below the first layer.
 				//copyToCheck.add(new Integer[] { x, y, z });	// the Block coords left to check
 			//}
 		}
 		
-		flag();
 		int y, x, z; // x, y and z of current block
 		z = 0; // the starting block will be at z = 0 because that is the bottom-most layer
 
@@ -70,26 +72,26 @@ public class Maze {
 		end = get(x, y, z);
 		
 		ArrayList<Integer[]> toCheck;
-		boolean removed;
-		do {
+		boolean removed = true;
+		while (removed) {
 			removed = false;
 			toCheck = new ArrayList<Integer[]> ();
-			toCheck.addAll(copyToCheck);
+			for (Integer[] thing : copyToCheck) {
+				toCheck.add(thing);
+			}
 			Collections.shuffle(toCheck); // Randomizes the order of the list of coordinates to check.
-			
+			System.out.println(toCheck.size());
 			for (Integer[] coords : toCheck) {
-				Block curr = get(coords[0], coords[1], coords[2]); // current block
-				ArrayList<Block> neighbors = getAdj(curr); // gets adjacent blocks
-				boolean isJoint = false; // Are the sets of the adjacent blocks joint
-				if (whiteSpaces(neighbors) > 1) { // If there are more whitespace neighbors than one do this
-					for (int i = 0; i < neighbors.size() - 1 && !isJoint; i++) { // checks if there are any whitespace neighbors that have shared sets
-						if (neighbors.get(i).t == ' ') {
-							for (int j = i; j < neighbors.size(); j++) {
-								if (neighbors.get(j).t == ' ')
-									if (neighbors.get(i).tree.equals(neighbors.get(j).tree)) { // if the sets are the same, exit
-										isJoint = true;
-										break;
-									}
+				Block curr = get(coords[0], coords[1], coords[2]);
+				ArrayList<Block> neighbors = getAdj(curr);
+				boolean isJoint = false;
+				if (whiteSpaces(neighbors) > 1) {
+					for (int i = 0; i < neighbors.size() - 1 && !isJoint; i++) {
+						for (int j = i+1; j < neighbors.size(); j++) {
+							if (neighbors.get(j).t == ' ')
+								if (neighbors.get(i).tree == neighbors.get(j).tree) {
+									isJoint = true;
+									break;
 								}
 						}
 						if (isJoint) { // Even if it doesn't matter too much, don't want to spend a bunch of time iterating through the stuff unless I have too.
@@ -103,18 +105,18 @@ public class Maze {
 					}
 				}
 			}
-		} while (removed);
+		}
 		
-		for (int i = 0; i < size * size; i++) {
+		/*for (int i = 0; i < size * size; i++) {
 			System.out.print(get(0, i / size, i % size).t);
 			if ((i+1)%size == 0) {
 				System.out.println();
 			}
-		}
+		}*/
 		
 		
-		start.t = ' '; // sets the type of the start and end blocks
-		end.t = ' ';
+		start.t = 'w'; // sets the type of the start and end blocks
+		end.t = 'w';
 	}
 	
 	public ArrayList<Block> getAdj (Block b) { // gets the adjacent blocks
@@ -132,24 +134,33 @@ public class Maze {
 		System.out.println(++flags);
 	}
 	
+	private int whiteSpaces (ArrayList<Block> blocks) {
+		int c = 0;
+		int theSize = blocks.size();
+		for (int i = 0; i < theSize; i ++) {
+			if (i+c == theSize-1) {
+				return c;
+			}
+			if (blocks.get(i-c).t == ' ') {
+				blocks.remove(i-c++);
+			}
+		}
+		return c;
+	}
+	
 	private void join (Block b) {
 		ArrayList<Block> neighbors = getAdj(b); // All of the neighbors.
 		for (Block neighbor: neighbors) { // Iterates through all of the neighbors.
 			if (neighbor.t == ' ') { // Important, checks if the neighbor is a wall or not.
-				b.tree.addAll(neighbor.tree); // If it isn't a wall, it adds all of the members of the trees of the neighbors it used to separate.
+				for (Block member: neighbor.tree) {
+					b.tree.add(member);
+				}
 			}
 		}
 		for (Block member : b.tree) { // Iterates through all of the members of the tree.
 			if (member.t == ' ') member.tree = b.tree; // Sets the trees of the members to the shared tree. 
 		}
 		b.t = ' ';
-	}
-	
-	private int whiteSpaces(ArrayList<Block> neighbors) { // gets number of whitespace neighbors
-		int c = 0;
-		for (Block b : neighbors)
-			if (b.t == ' ') c++;
-		return c;
 	}
 	
 	private double random(double lower, double upper) {
@@ -190,6 +201,10 @@ public class Maze {
 	
 	public Block getStart ( ) {
 		return start;
+	}
+	
+	public void iterate () {
+		
 	}
 	
 	public Block getEnd () {
