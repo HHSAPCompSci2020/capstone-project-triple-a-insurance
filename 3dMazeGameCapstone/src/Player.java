@@ -52,8 +52,10 @@ public class Player extends Camera {
 	 * @param blocks ArrayList of Block objects to check collision with
 	 */
 	public void act(ArrayList<Block> blocks) {
+		//System.out.println(" " +  blocks.get(0).getX() + " " + blocks.get(0).getY());
 		PVector position = getPosition();
 		PVector velocity = getVelocity();
+		System.out.println("" + position.x + " "+ position.y + " " +position.z);
 		//System.out.println("inAct " + blocks.size());
 		for (Block b : blocks) {
 			//System.out.println("inLoop");
@@ -72,13 +74,20 @@ public class Player extends Camera {
 			// dimensions/2 to get the edges
 			float blockSize = b.getSize();
 			float blockHeight = b.getSize();
-			float blockLeft = b.getX() - blockSize / 2;
-			float blockRight = b.getX() + blockSize / 2;
+			float blockLeft = b.getX(); //- blockSize / 2;
+			float blockRight = b.getX() + blockSize;// / 2;
 			float blockTop = b.getY() - blockHeight / 2;
 			float blockBottom = b.getY() + blockHeight / 2;
 			float blockFront = b.getZ() - blockSize / 2;
 			float blockBack = b.getZ() + blockSize / 2;
-			if(b instanceof Trap) {
+			//System.out.println("x " + b.getX() + " y " + b.getY() + " z " + b.getZ());
+			/*if (b.getX()==0||b.getY()==0||b.getZ()==0) {
+				System.out.println("" + position.x + " "+ position.y + " " +position.z);
+			}
+			if(b.getX()==11||b.getY()==11||b.getZ()==11) {
+				System.out.println("12 " + position.x + " "+ position.y + " " +position.z);
+			}*/
+			/*if(b instanceof Trap) {
 				trapCollision = true;
 			}
 			// accordingly
@@ -128,7 +137,7 @@ public class Player extends Camera {
 				else {
 					position.z = blockBack + d / 2;
 				}
-			}
+			}*/
 		}
 
 	}

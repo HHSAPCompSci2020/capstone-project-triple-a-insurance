@@ -14,7 +14,8 @@ public class MazeRunner extends PApplet {
 	 * makes the screen some size
 	 */
 	public void settings() {
-		size(1000,1000,P3D);
+		//size(1000,1000,P3D);
+		fullScreen(P3D);
 		
 	}
 	/**
@@ -58,8 +59,8 @@ public class MazeRunner extends PApplet {
 			player.moveX(1);
 		else if (checkKey(KeyEvent.VK_D))
 			player.moveX(-1);
-		if (checkKey(KeyEvent.VK_B)) {
-			
+		if (checkKey(KeyEvent.VK_H)) {
+			PApplet.main("MenuScreen");
 		}
 		
 
