@@ -29,7 +29,7 @@ public class Block {
 	}
 	
 	public void display(PApplet g) {
-		if (t == 'w') {
+		if (t == ' ') {
 			g.pushMatrix();
 			g.translate(x*SIZE, y*SIZE, z*SIZE);
 			g.fill(100, (255), 100);

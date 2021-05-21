@@ -48,9 +48,7 @@ public class Maze {
 			} else {
 				maze.add(new Block (x, y, z, 'w'));
 				if (x > 0 && y > 0 && z > 0 && x < size-1 && y < size-1 && z < size-1) { // if the blocks are within the outer shell, add the blocks to the list of walls to check
-					copyToCheck.add(new Integer[] {x, y, z});
-				} else {
-					get (x, y, z).t = ' ';
+					if (x%2+y%2+z%2 == 2)copyToCheck.add(new Integer[] {x, y, z});
 				}
 			}
 			//if (x > 0 && y > 0 && z > 0 && x < size-1 && y < size-1 && z < size-1) { // checks if the coordinates are within the smaller cube that is below the first layer.
@@ -85,7 +83,6 @@ public class Maze {
 				Block curr = get(coords[0], coords[1], coords[2]);
 				ArrayList<Block> neighbors = getAdj(curr);
 				boolean isJoint = false;
-				if (whiteSpaces(neighbors) > 1) {
 					for (int i = 0; i < neighbors.size() - 1 && !isJoint; i++) {
 						for (int j = i+1; j < neighbors.size(); j++) {
 							if (neighbors.get(j).t == ' ')
@@ -104,7 +101,6 @@ public class Maze {
 						join(curr); // Joins all of the sets, changes the type of the block.
 					}
 				}
-			}
 		}
 		
 		/*for (int i = 0; i < size * size; i++) {
@@ -115,8 +111,8 @@ public class Maze {
 		}*/
 		
 		
-		start.t = 'w'; // sets the type of the start and end blocks
-		end.t = 'w';
+		start.t = ' '; // sets the type of the start and end blocks
+		end.t = ' ';
 	}
 	
 	public ArrayList<Block> getAdj (Block b) { // gets the adjacent blocks
@@ -138,11 +134,11 @@ public class Maze {
 		int c = 0;
 		int theSize = blocks.size();
 		for (int i = 0; i < theSize; i ++) {
-			if (i+c == theSize-1) {
-				return c;
-			}
 			if (blocks.get(i-c).t == ' ') {
 				blocks.remove(i-c++);
+			}
+			if (i+c == theSize-1) {
+				return c;
 			}
 		}
 		return c;
