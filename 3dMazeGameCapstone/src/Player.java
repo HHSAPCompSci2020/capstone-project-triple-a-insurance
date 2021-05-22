@@ -75,12 +75,12 @@ public class Player extends Camera {
 			float blockSize = b.getSize();
 			float blockHeight = b.getSize();
 			float bh2 = blockSize/2;
-			float blockLeft = b.getX() + bh2 - blockSize / 2;
-			float blockRight = b.getX()+ bh2 + blockSize / 2;
-			float blockTop = b.getY()+ bh2 - blockHeight / 2;
-			float blockBottom = b.getY() + bh2 + blockHeight / 2;
-			float blockFront = b.getZ()+ bh2 - blockSize / 2;
-			float blockBack = b.getZ() + bh2 + blockSize / 2;
+			float blockLeft = (b.getX() + bh2 - blockSize / 2) * blockSize;
+			float blockRight = (b.getX()+ bh2 + blockSize / 2) * blockSize;
+			float blockTop = (b.getY()+ bh2 - blockHeight / 2) * blockSize;
+			float blockBottom = (b.getY() + bh2 + blockHeight / 2) * blockSize;
+			float blockFront = (b.getZ()+ bh2 - blockSize / 2) * blockSize;
+			float blockBack = (b.getZ() + bh2 + blockSize / 2) * blockSize;
 			if(b instanceof Trap) {
 				trapCollision = true;
 			}
