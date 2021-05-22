@@ -195,7 +195,7 @@ public class Maze {
 		return generated;
 	}
 	
-	public Block getStart ( ) {
+	public Block getStart () {
 		return start;
 	}
 	
