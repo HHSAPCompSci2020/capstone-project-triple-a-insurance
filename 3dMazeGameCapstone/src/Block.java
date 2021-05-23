@@ -43,20 +43,20 @@ public class Block {
 		// the x y z coords of the block are in the center so +/- by size/2 in all
 		// directions to get the edges
 		//System.out.println("x " + x );
-		float left = this.x*SIZE + SIZE ;
+		float left = this.x*SIZE + SIZE/2 ;
 		//System.out.println("l " + left);
-		float right = this.x*SIZE ;
+		float right = this.x*SIZE -SIZE/2;
 		//System.out.println("r " + right);
-		float top = this.y*SIZE ;
+		float top = this.y*SIZE - SIZE/2 ;
 		//System.out.println("t " + top);
-		float bottom = this.y*SIZE + SIZE;
+		float bottom = this.y*SIZE + SIZE/2;
 		//System.out.println("b " + bottom);
-		float front = this.z*SIZE;
+		float front = this.z*SIZE - SIZE/2;
 		//System.out.println("f " +front);
-		float back = this.z*SIZE + SIZE;
+		float back = this.z*SIZE + SIZE/2;
 		//System.out.println("b " +back);
 		//System.out.println("" + left + " " + right);
-		if (x > left && x < right && y > top && y < bottom && z > front && z < back) {
+		if (x < left && x > right && y > top && y < bottom && z > front && z < back) {
 			return true;
 		}
 

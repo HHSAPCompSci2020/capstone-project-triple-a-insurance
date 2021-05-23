@@ -21,8 +21,7 @@ public class Player extends Camera {
 		// speed is at .12f max
 		this(1, 3, 1, .04f, .5f, .5f, .75f, PConstants.PI / 3f, 80f);
 		this.start = start;
-		System.out.println(" " + start.x + " "+ start.y + " "  +start.z);
-		setPosition((start.x-1)*10+5,start.y*10+5,start.z*10+5);
+		System.out.println("" + start.x + " "+ start.y + " "  +start.z);
 	}
 
 	/**
@@ -69,12 +68,12 @@ public class Player extends Camera {
 				// add/substract
 				// its (dimension in axis)/2 to get the edges
 				//System.out.println("" + position.x + " "+ position.y + " " +position.z);
-				float left = position.x - w / 2;
-				float right = position.x + w / 2;
-				float top = position.y - h / 2;
-				float bottom = position.y + h / 2;
-				float front = position.z + d / 2;
-				float back = position.z - d / 2;
+				float left = position.x + 2.5f;
+				float right = position.x - 2.5f;
+				float top = position.y - 2.5f;
+				float bottom = position.y +2.5f;
+				float front = position.z + 2.5f;
+				float back = position.z - 2.5f;
 				// block position is in the center of the block so
 				// you have to add/substract its
 				// dimensions/2 to get the edges
@@ -89,10 +88,11 @@ public class Player extends Camera {
 				if(b instanceof Trap) {
 					trapCollision = false;
 				}
+				//System.out.println("" + position.x + " " + position.y + " "+ position.z);
 				// accordingly
 				if (b.isPointInCube(left, position.y, position.z)) {
 					// move right
-					System.out.println("" + blockLeft + " " + blockRight + " "+ position.x);
+					System.out.println("" + blockLeft + " " + blockRight + " X "+ position.x + " Z " + position.z);
 					System.out.println("" + b.getX() + " " + b.getY() + " "+ b.getZ());
 					if(trapCollision) {
 						//moveTo(start.x, start.y-15, start.z);
