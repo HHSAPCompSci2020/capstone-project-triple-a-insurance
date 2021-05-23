@@ -46,7 +46,7 @@ public class Camera {
 	private Point mouse, pMouse;
 
 	public Camera() {
-		this(1, 1, 1, .75f, PConstants.PI / 3f, 1000f);
+		this(3, 1, 1, .75f, PConstants.PI / 3f, 1000f);
 	}
 
 	public Camera(float speed, float xSensitivity, float ySensitivity, float friction, float fov, float viewDistance) {
