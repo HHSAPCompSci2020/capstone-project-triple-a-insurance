@@ -90,7 +90,7 @@ public class Player extends Camera {
 					//moveTo(start.x, start.y-15, start.z);
 				}
 				else {
-					position.x = blockRight + w / 2;
+					moveTo(blockRight + w / 2, position.y, position.z);
 				}
 			} else if (b.isPointInCube(right, position.y, position.z)) {
 				// move left
@@ -98,7 +98,7 @@ public class Player extends Camera {
 					//moveTo(start.x, start.y-15, start.z);
 				}
 				else {
-					position.x = blockLeft - w / 2;
+					moveTo(blockLeft - w / 2, position.y, position.z);
 				}
 			}
 			if (b.isPointInCube(position.x, top, position.z)) {// move down
@@ -106,11 +106,11 @@ public class Player extends Camera {
 					//(start.x, start.y-15, start.z);
 				}
 				else {
-					position.y = blockBottom + h / 2;
+					moveTo(position.x, blockBottom + h / 2, position.z);
 				}
 			} else if (b.isPointInCube(position.x, bottom, position.z)) {
 				// move up/grounded
-				position.y = blockTop - h / 2;
+				moveTo(position.x, blockTop - h / 2, position.z);
 				velocity.y = 0;
 				grounded = true;
 			}
@@ -120,7 +120,7 @@ public class Player extends Camera {
 					//moveTo(start.x, start.y-15, start.z);
 				}
 				else {
-					position.z = blockFront - d / 2;
+					moveTo(position.x, position.y, blockFront - d / 2);
 				}
 			} else if (b.isPointInCube(position.x, position.y, back)) {
 				// move forward
@@ -128,7 +128,7 @@ public class Player extends Camera {
 					//moveTo(start.x, start.y-15, start.z);
 				}
 				else {
-					position.z = blockBack + d / 2;
+					moveTo(position.x, position.y, blockBack + d / 2);
 				}
 			}
 		}
