@@ -82,7 +82,7 @@ public class Player extends Camera {
 			float blockFront = (b.getZ()+ bh2 - blockSize / 2) * blockSize;
 			float blockBack = (b.getZ() + bh2 + blockSize / 2) * blockSize;
 			if(b instanceof Trap) {
-				trapCollision = true;
+				trapCollision = false;
 			}
 			// accordingly
 			if (b.isPointInCube(left, position.y, position.z)) {

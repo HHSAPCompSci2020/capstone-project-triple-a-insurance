@@ -64,7 +64,7 @@ public class Maze {
 		endx = ((int)(Math.random() * (size/2)))*2 + 1; 
 		endy = ((int)(Math.random() * (size/2)))*2 + 1;
 		endz = size-1;
-		end = get(x, y, z);
+		end = get(endx, endy, endz);
 		
 		ArrayList<Integer[]> toCheck;
 		boolean removed = true;
@@ -182,7 +182,7 @@ public class Maze {
 	}
 	
 	public void setPlayerAtStart(Player player) {
-		player.moveTo(start.getX(), start.getY()-15, start.getZ());
+		player.moveTo(start.getX(), start.getY(), start.getZ());
 	}
 	
 	public ArrayList<Block> getWalls() {
