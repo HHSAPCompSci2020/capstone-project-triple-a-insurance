@@ -53,12 +53,12 @@ public class Maze {
 			//}
 		}
 		
-		int y, x, z; // x, y and z of current block
-		z = 0; // the starting block will be at z = 0 because that is the bottom-most layer
+		int starty, startx, startz; // x, y and z of current block
+		startz = 0; // the starting block will be at z = 0 because that is the bottom-most layer
 
-		x = ((int)(Math.random() * (size/2)))*2 + 1; 
-		y = ((int)(Math.random() * (size/2)))*2 + 1;
-		start = get(x, y, z);
+		startx = ((int)(Math.random() * (size/2)))*2 + 1; 
+		starty = ((int)(Math.random() * (size/2)))*2 + 1;
+		start = get(startx, starty, startz);
 		
 		int endx, endy, endz; // x, y and z of end block
 		endx = ((int)(Math.random() * (size/2)))*2 + 1; 
@@ -123,23 +123,6 @@ public class Maze {
 		return neighbors;
 	}
 	
-	private void flag () {
-		System.out.println(++flags);
-	}
-	
-	private int whiteSpaces (ArrayList<Block> blocks) {
-		int c = 0;
-		int theSize = blocks.size();
-		for (int i = 0; i < theSize; i ++) {
-			if (blocks.get(i-c).t == ' ') {
-				blocks.remove(i-c++);
-			}
-			if (i+c == theSize-1) {
-				return c;
-			}
-		}
-		return c;
-	}
 	
 	private void join (Block b) {
 		ArrayList<Block> neighbors = getAdj(b); // All of the neighbors.
@@ -188,7 +171,7 @@ public class Maze {
 	public ArrayList<Block> getWalls() {
 		ArrayList<Block> b = new ArrayList<Block>();
 		for (int i = 0; i <maze.size(); i++) {
-			if (maze.get(i).t == 'w') {
+			if (maze.get(i).t != 'w') {
 				b.add(maze.get(i));
 			}
 		}
