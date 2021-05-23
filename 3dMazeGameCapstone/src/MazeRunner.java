@@ -91,9 +91,6 @@ public class MazeRunner extends PApplet {
 	public void keyPressed() {
 		if (!checkKey(keyCode))
 			keys.add(keyCode);
-
-		if (checkKey(KeyEvent.VK_SPACE))
-			player.jump();
 	}
 
 	/**
