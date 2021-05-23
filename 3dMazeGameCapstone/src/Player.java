@@ -53,6 +53,7 @@ public class Player extends Camera {
 	 */
 	public void act(ArrayList<Block> blocks) {
 		if (canAct) {
+			canAct = false;
 			//System.out.println(" " +  blocks.get(0).getX() + " " + blocks.get(0).getY());
 			PVector position = getPosition();
 			PVector velocity = getVelocity();
@@ -94,7 +95,7 @@ public class Player extends Camera {
 						moveTo(blockRight+0.25f, position.y, position.z);
 						System.out.println("Yeeted r");
 					}
-				} else if (b.isPointInCube(right, position.y, position.z)) {
+				} if (b.isPointInCube(right, position.y, position.z)) {
 					// move left
 					if(trapCollision) {
 						//moveTo(start.x, start.y-15, start.z);
@@ -112,7 +113,7 @@ public class Player extends Camera {
 						moveTo(position.x, blockBottom + 0.25f, position.z);
 						System.out.println("Yeeted d");
 					}
-				} else if (b.isPointInCube(position.x, bottom, position.z)) {
+				} if (b.isPointInCube(position.x, bottom, position.z)) {
 					// move up/grounded
 					moveTo(position.x, blockTop - 0.25f, position.z);
 					System.out.println("Yeeted u");
@@ -128,7 +129,7 @@ public class Player extends Camera {
 						moveTo(position.x, position.y, blockFront - 0.25f);
 						System.out.println("Yeeted b");
 					}
-				} else if (b.isPointInCube(position.x, position.y, back)) {
+				} if (b.isPointInCube(position.x, position.y, back)) {
 					// move forward
 					if(trapCollision) {
 						//moveTo(start.x, start.y-15, start.z);
