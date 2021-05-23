@@ -11,7 +11,7 @@ import processing.core.PApplet;
  *         the ground or the wall
  */
 public class Block {
-	private int fillColor;
+	//private int fillColor;
 	public int x, y, z;
 	public Maze maze;
 	public char t; // type of block, wall if 'w', empty if ' '
@@ -42,7 +42,9 @@ public class Block {
 	public boolean isPointInCube(float x, float y, float z) {
 		// the x y z coords of the block are in the center so +/- by size/2 in all
 		// directions to get the edges
+		//System.out.println("" + x + " " + y + " " + z);
 		float left = this.x*SIZE ;
+		//System.out.println(left);
 		float right = this.x*SIZE + SIZE ;
 		float top = this.y*SIZE ;
 		float bottom = this.y*SIZE + SIZE;
