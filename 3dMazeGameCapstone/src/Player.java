@@ -18,7 +18,7 @@ public class Player extends Camera {
 
 	public Player(Block start) {
 		// speed is at .12f max
-		this(1, 3, 1, .04f, .5f, .5f, .75f, PConstants.PI / 3f, 60f);
+		this(1, 3, 1, .04f, .5f, .5f, .75f, PConstants.PI / 3f, 80f);
 		this.start = start;
 	}
 
