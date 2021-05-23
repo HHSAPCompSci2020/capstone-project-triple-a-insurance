@@ -135,14 +135,6 @@ public class Player extends Camera {
 
 	}
 
-	public void jump() {
-		if (grounded) {
-			grounded = false;
-			getVelocity().y -= 3f;
-			getPosition().y -= .5;
-		}
-	}
-
 	public float getWidth() {
 		return w;
 	}
@@ -163,7 +155,6 @@ public class Player extends Camera {
 	 * @param z z-coordinate of where to move the player
 	 */
 	public void moveTo(float x, float y, float z) {
-		System.out.println("Yeet player");
 		this.getPosition().x = x;
 		this.getPosition().y = y;
 		this.getPosition().z = z;

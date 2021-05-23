@@ -171,7 +171,7 @@ public class Maze {
 	public ArrayList<Block> getWalls() {
 		ArrayList<Block> b = new ArrayList<Block>();
 		for (int i = 0; i <maze.size(); i++) {
-			if (maze.get(i).t != 'w') {
+			if (maze.get(i).t == 'w') {
 				b.add(maze.get(i));
 			}
 		}
