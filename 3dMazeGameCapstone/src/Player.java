@@ -91,6 +91,7 @@ public class Player extends Camera {
 				}
 				else {
 					moveTo(blockRight + w / 2, position.y, position.z);
+					System.out.println("Yeeted r");
 				}
 			} else if (b.isPointInCube(right, position.y, position.z)) {
 				// move left
@@ -99,6 +100,7 @@ public class Player extends Camera {
 				}
 				else {
 					moveTo(blockLeft - w / 2, position.y, position.z);
+					System.out.println("Yeeted l");
 				}
 			}
 			if (b.isPointInCube(position.x, top, position.z)) {// move down
@@ -107,10 +109,12 @@ public class Player extends Camera {
 				}
 				else {
 					moveTo(position.x, blockBottom + h / 2, position.z);
+					System.out.println("Yeeted d");
 				}
 			} else if (b.isPointInCube(position.x, bottom, position.z)) {
 				// move up/grounded
 				moveTo(position.x, blockTop - h / 2, position.z);
+				System.out.println("Yeeted u");
 				velocity.y = 0;
 				grounded = true;
 			}
@@ -121,6 +125,7 @@ public class Player extends Camera {
 				}
 				else {
 					moveTo(position.x, position.y, blockFront - d / 2);
+					System.out.println("Yeeted b");
 				}
 			} else if (b.isPointInCube(position.x, position.y, back)) {
 				// move forward
@@ -129,6 +134,7 @@ public class Player extends Camera {
 				}
 				else {
 					moveTo(position.x, position.y, blockBack + d / 2);
+					System.out.println("Yeeted f");
 				}
 			}
 		}
@@ -155,6 +161,7 @@ public class Player extends Camera {
 	 * @param z z-coordinate of where to move the player
 	 */
 	public void moveTo(float x, float y, float z) {
+		System.out.println("Yeet player");
 		this.getPosition().x = x;
 		this.getPosition().y = y;
 		this.getPosition().z = z;

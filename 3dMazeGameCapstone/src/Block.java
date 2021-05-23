@@ -11,7 +11,7 @@ import processing.core.PApplet;
  *         the ground or the wall
  */
 public class Block {
-	private int fillColor;
+	//private int fillColor;
 	public int x, y, z;
 	public Maze maze;
 	public char t; // type of block, wall if 'w', empty if ' '
