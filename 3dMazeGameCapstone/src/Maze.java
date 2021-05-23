@@ -15,9 +15,6 @@ public class Maze {
 	private int flags = 0;
 	private int size;
 	private ArrayList<Block> maze;
-	private int EASY = 12;
-	private int MEDIUM = 24;
-	private int HARD = 30;
 	private Block start;
 	private Block end;
 	//private Player p;
@@ -197,10 +194,6 @@ public class Maze {
 	
 	public Block getStart () {
 		return start;
-	}
-	
-	public void iterate () {
-		
 	}
 	
 	public Block getEnd () {

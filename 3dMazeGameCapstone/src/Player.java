@@ -55,7 +55,7 @@ public class Player extends Camera {
 		//System.out.println(" " +  blocks.get(0).getX() + " " + blocks.get(0).getY());
 		PVector position = getPosition();
 		PVector velocity = getVelocity();
-		System.out.println("" + position.x + " "+ position.y + " " +position.z);
+		//System.out.println("" + position.x + " "+ position.y + " " +position.z);
 		//System.out.println("inAct " + blocks.size());
 		for (Block b : blocks) {
 			//System.out.println("inLoop");
