@@ -42,7 +42,9 @@ public class Block {
 	public boolean isPointInCube(float x, float y, float z) {
 		// the x y z coords of the block are in the center so +/- by size/2 in all
 		// directions to get the edges
+		//System.out.println("" + x + " " + y + " " + z);
 		float left = this.x*SIZE ;
+		//System.out.println(left);
 		float right = this.x*SIZE + SIZE ;
 		float top = this.y*SIZE ;
 		float bottom = this.y*SIZE + SIZE;
@@ -56,15 +58,15 @@ public class Block {
 		return false;
 	}
 	public float getX() {
-		return x*10;
+		return x;
 	}
 
 	public float getY() {
-		return y*10;
+		return y;
 	}
 
 	public float getZ() {
-		return z*10;
+		return z;
 	}
 
 	public float getSize() {
