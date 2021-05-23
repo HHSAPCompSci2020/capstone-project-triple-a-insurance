@@ -37,9 +37,9 @@ public class Player extends Camera {
 	public Player(float w, float h, float d, float speed, float xSensitivity, float ySensitivity, float friction,
 			float fov, float viewDistance) {
 		super(speed, xSensitivity, ySensitivity, friction, fov, viewDistance);
-		this.w = w;
-		this.h = h;
-		this.d = d;
+		this.w = 0;
+		this.h = 0;
+		this.d = 0;
 		grounded = true;
 		//gravity = 0.06f;
 	}
