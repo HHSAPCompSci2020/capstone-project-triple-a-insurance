@@ -165,7 +165,7 @@ public class Maze {
 	}
 	
 	public void setPlayerAtStart(Player player) {
-		player.moveTo(start.getX(), start.getY()-15, start.getZ());
+		player.moveTo(start.getX(), start.getY(), start.getZ());
 	}
 	
 	public ArrayList<Block> getWalls() {
