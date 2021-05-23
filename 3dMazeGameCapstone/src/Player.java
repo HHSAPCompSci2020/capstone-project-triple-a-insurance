@@ -10,16 +10,19 @@ import processing.core.*;
  */
 public class Player extends Camera {
 	private float w, h, d;
-	private boolean grounded;
+	//private boolean grounded;
 	//private float gravity;
 	private boolean trapCollision = false;
 	//private int ix, iy, iz;
 	private Block start;
 	private boolean canAct = true;
 
-	public Player() {
+	public Player(Block start) {
 		// speed is at .12f max
 		this(1, 3, 1, .04f, .5f, .5f, .75f, PConstants.PI / 3f, 80f);
+		this.start = start;
+		System.out.println(" " + start.x + " "+ start.y + " "  +start.z);
+		setPosition((start.x-1)*10+5,start.y*10+5,start.z*10+5);
 	}
 
 	/**
@@ -41,7 +44,8 @@ public class Player extends Camera {
 		this.w = 0;
 		this.h = 0;
 		this.d = 0;
-		grounded = true;
+		
+		//grounded = true;
 		//gravity = 0.06f;
 	}
 
@@ -53,6 +57,7 @@ public class Player extends Camera {
 	 */
 	public void act(ArrayList<Block> blocks) {
 		if (canAct) {
+			canAct = false;
 			//System.out.println(" " +  blocks.get(0).getX() + " " + blocks.get(0).getY());
 			PVector position = getPosition();
 			PVector velocity = getVelocity();
@@ -75,8 +80,8 @@ public class Player extends Camera {
 				// dimensions/2 to get the edges
 				float blockSize = b.getSize();
 				float blockHeight = b.getSize();
-				float blockLeft = b.getX() * blockSize;
-				float blockRight = b.getX() * blockSize + blockSize;
+				float blockLeft = b.getX() * blockSize+ blockSize;
+				float blockRight = b.getX() * blockSize ;
 				float blockTop = b.getY() * blockSize;
 				float blockBottom = b.getY() * blockSize + blockSize;
 				float blockFront = b.getZ() * blockSize;
@@ -87,11 +92,13 @@ public class Player extends Camera {
 				// accordingly
 				if (b.isPointInCube(left, position.y, position.z)) {
 					// move right
+					System.out.println("" + blockLeft + " " + blockRight + " "+ position.x);
+					System.out.println("" + b.getX() + " " + b.getY() + " "+ b.getZ());
 					if(trapCollision) {
 						//moveTo(start.x, start.y-15, start.z);
 					}
 					else {
-						moveTo(blockRight+0.25f, position.y, position.z);
+						moveTo(position.x-0.25f, position.y, position.z);
 						System.out.println("Yeeted r");
 					}
 				} else if (b.isPointInCube(right, position.y, position.z)) {
@@ -100,7 +107,7 @@ public class Player extends Camera {
 						//moveTo(start.x, start.y-15, start.z);
 					}
 					else {
-						moveTo(blockLeft - 0.25f, position.y, position.z);
+						moveTo(position.x + 0.25f, position.y, position.z);
 						System.out.println("Yeeted l");
 					}
 				}
@@ -109,15 +116,15 @@ public class Player extends Camera {
 						//(start.x, start.y-15, start.z);
 					}
 					else {
-						moveTo(position.x, blockBottom + 0.25f, position.z);
+						moveTo(position.x, position.y + 0.25f, position.z);
 						System.out.println("Yeeted d");
 					}
 				} else if (b.isPointInCube(position.x, bottom, position.z)) {
 					// move up/grounded
-					moveTo(position.x, blockTop - 0.25f, position.z);
+					moveTo(position.x, position.y - 0.25f, position.z);
 					System.out.println("Yeeted u");
 					velocity.y = 0;
-					grounded = true;
+					//grounded = true;
 				}
 				if (b.isPointInCube(position.x, position.y, front)) {
 					// move back
@@ -125,7 +132,7 @@ public class Player extends Camera {
 						//moveTo(start.x, start.y-15, start.z);
 					}
 					else {
-						moveTo(position.x, position.y, blockFront - 0.25f);
+						moveTo(position.x, position.y, position.z - 0.25f);
 						System.out.println("Yeeted b");
 					}
 				} else if (b.isPointInCube(position.x, position.y, back)) {
@@ -134,7 +141,7 @@ public class Player extends Camera {
 						//moveTo(start.x, start.y-15, start.z);
 					}
 					else {
-						moveTo(position.x, position.y, blockBack + 0.5f);
+						moveTo(position.x, position.y, position.z + 0.5f);
 						System.out.println("Yeeted f");
 					}
 				}

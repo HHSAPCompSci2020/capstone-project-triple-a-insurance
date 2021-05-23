@@ -262,4 +262,10 @@ public class Camera {
 	public void setPan(double angle) {
 		pan = (float) angle;
 	}
+	
+	public void setPosition(int x,int y,int z) {
+		position.x = x;
+		position.y = y;
+		position.z = z;
+	}
 }
