@@ -15,6 +15,7 @@ public class Player extends Camera {
 	private boolean trapCollision = false;
 	//private int ix, iy, iz;
 	private Block start;
+	private boolean canAct = true;
 
 	public Player() {
 		// speed is at .12f max
@@ -51,93 +52,95 @@ public class Player extends Camera {
 	 * @param blocks ArrayList of Block objects to check collision with
 	 */
 	public void act(ArrayList<Block> blocks) {
-		//System.out.println(" " +  blocks.get(0).getX() + " " + blocks.get(0).getY());
-		PVector position = getPosition();
-		PVector velocity = getVelocity();
-		//System.out.println("" + position.x + " "+ position.y + " " +position.z);
-		//System.out.println("inAct " + blocks.size());
-		for (Block b : blocks) {
-			//System.out.println("inLoop");
-			// position is in the center of the player so you have to
-			// add/substract
-			// its (dimension in axis)/2 to get the edges
+		if (canAct) {
+			//System.out.println(" " +  blocks.get(0).getX() + " " + blocks.get(0).getY());
+			PVector position = getPosition();
+			PVector velocity = getVelocity();
 			//System.out.println("" + position.x + " "+ position.y + " " +position.z);
-			float left = position.x - w / 2;
-			float right = position.x + w / 2;
-			float top = position.y - h / 2;
-			float bottom = position.y + h / 2;
-			float front = position.z + d / 2;
-			float back = position.z - d / 2;
-			// block position is in the center of the block so
-			// you have to add/substract its
-			// dimensions/2 to get the edges
-			float blockSize = b.getSize();
-			float blockHeight = b.getSize();
-			float blockLeft = b.getX() * blockSize;
-			float blockRight = b.getX() * blockSize + blockSize;
-			float blockTop = b.getY() * blockSize;
-			float blockBottom = b.getY() * blockSize + blockSize;
-			float blockFront = b.getZ() * blockSize;
-			float blockBack = b.getZ() * blockSize + blockSize;
-			if(b instanceof Trap) {
-				trapCollision = false;
+			//System.out.println("inAct " + blocks.size());
+			for (Block b : blocks) {
+				//System.out.println("inLoop");
+				// position is in the center of the player so you have to
+				// add/substract
+				// its (dimension in axis)/2 to get the edges
+				//System.out.println("" + position.x + " "+ position.y + " " +position.z);
+				float left = position.x - w / 2;
+				float right = position.x + w / 2;
+				float top = position.y - h / 2;
+				float bottom = position.y + h / 2;
+				float front = position.z + d / 2;
+				float back = position.z - d / 2;
+				// block position is in the center of the block so
+				// you have to add/substract its
+				// dimensions/2 to get the edges
+				float blockSize = b.getSize();
+				float blockHeight = b.getSize();
+				float blockLeft = b.getX() * blockSize;
+				float blockRight = b.getX() * blockSize + blockSize;
+				float blockTop = b.getY() * blockSize;
+				float blockBottom = b.getY() * blockSize + blockSize;
+				float blockFront = b.getZ() * blockSize;
+				float blockBack = b.getZ() * blockSize + blockSize;
+				if(b instanceof Trap) {
+					trapCollision = false;
+				}
+				// accordingly
+				if (b.isPointInCube(left, position.y, position.z)) {
+					// move right
+					if(trapCollision) {
+						//moveTo(start.x, start.y-15, start.z);
+					}
+					else {
+						moveTo(blockRight+0.25f, position.y, position.z);
+						System.out.println("Yeeted r");
+					}
+				} else if (b.isPointInCube(right, position.y, position.z)) {
+					// move left
+					if(trapCollision) {
+						//moveTo(start.x, start.y-15, start.z);
+					}
+					else {
+						moveTo(blockLeft - 0.25f, position.y, position.z);
+						System.out.println("Yeeted l");
+					}
+				}
+				if (b.isPointInCube(position.x, top, position.z)) {// move down
+					if(trapCollision) {
+						//(start.x, start.y-15, start.z);
+					}
+					else {
+						moveTo(position.x, blockBottom + 0.25f, position.z);
+						System.out.println("Yeeted d");
+					}
+				} else if (b.isPointInCube(position.x, bottom, position.z)) {
+					// move up/grounded
+					moveTo(position.x, blockTop - 0.25f, position.z);
+					System.out.println("Yeeted u");
+					velocity.y = 0;
+					grounded = true;
+				}
+				if (b.isPointInCube(position.x, position.y, front)) {
+					// move back
+					if(trapCollision) {
+						//moveTo(start.x, start.y-15, start.z);
+					}
+					else {
+						moveTo(position.x, position.y, blockFront - 0.25f);
+						System.out.println("Yeeted b");
+					}
+				} else if (b.isPointInCube(position.x, position.y, back)) {
+					// move forward
+					if(trapCollision) {
+						//moveTo(start.x, start.y-15, start.z);
+					}
+					else {
+						moveTo(position.x, position.y, blockBack + 0.5f);
+						System.out.println("Yeeted f");
+					}
+				}
 			}
-			// accordingly
-			if (b.isPointInCube(left, position.y, position.z)) {
-				// move right
-				if(trapCollision) {
-					//moveTo(start.x, start.y-15, start.z);
-				}
-				else {
-					moveTo(blockRight+0.25f, position.y, position.z);
-					System.out.println("Yeeted r");
-				}
-			} else if (b.isPointInCube(right, position.y, position.z)) {
-				// move left
-				if(trapCollision) {
-					//moveTo(start.x, start.y-15, start.z);
-				}
-				else {
-					moveTo(blockLeft - 0.25f, position.y, position.z);
-					System.out.println("Yeeted l");
-				}
-			}
-			if (b.isPointInCube(position.x, top, position.z)) {// move down
-				if(trapCollision) {
-					//(start.x, start.y-15, start.z);
-				}
-				else {
-					moveTo(position.x, blockBottom + 0.25f, position.z);
-					System.out.println("Yeeted d");
-				}
-			} else if (b.isPointInCube(position.x, bottom, position.z)) {
-				// move up/grounded
-				moveTo(position.x, blockTop - 0.25f, position.z);
-				System.out.println("Yeeted u");
-				velocity.y = 0;
-				grounded = true;
-			}
-			if (b.isPointInCube(position.x, position.y, front)) {
-				// move back
-				if(trapCollision) {
-					//moveTo(start.x, start.y-15, start.z);
-				}
-				else {
-					moveTo(position.x, position.y, blockFront - 0.25f);
-					System.out.println("Yeeted b");
-				}
-			} else if (b.isPointInCube(position.x, position.y, back)) {
-				// move forward
-				if(trapCollision) {
-					//moveTo(start.x, start.y-15, start.z);
-				}
-				else {
-					moveTo(position.x, position.y, blockBack + 0.5f);
-					System.out.println("Yeeted f");
-				}
-			}
+			canAct = true;
 		}
-
 	}
 
 	public float getWidth() {
