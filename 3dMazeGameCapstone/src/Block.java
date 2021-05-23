@@ -29,7 +29,7 @@ public class Block {
 	}
 	
 	public void display(PApplet g) {
-		if (t == ' ') {
+		if (t == 'w') {
 			g.pushMatrix();
 			g.translate(x*SIZE, y*SIZE, z*SIZE);
 			g.fill(100, (255), 100);
@@ -42,12 +42,13 @@ public class Block {
 	public boolean isPointInCube(float x, float y, float z) {
 		// the x y z coords of the block are in the center so +/- by size/2 in all
 		// directions to get the edges
-		float left = this.x*SIZE - SIZE / 2;
-		float right = this.x*SIZE + SIZE / 2;
-		float top = this.y*SIZE - SIZE / 2;
-		float bottom = this.y*SIZE + SIZE / 2;
-		float front = this.z*SIZE - SIZE / 2;
-		float back = this.z*SIZE + SIZE / 2;
+		float left = this.x*SIZE ;
+		float right = this.x*SIZE + SIZE ;
+		float top = this.y*SIZE ;
+		float bottom = this.y*SIZE + SIZE;
+		float front = this.z*SIZE;
+		float back = this.z*SIZE + SIZE;
+		//System.out.println("" + left + " " + right);
 		if (x > left && x < right && y > top && y < bottom && z > front && z < back) {
 			return true;
 		}

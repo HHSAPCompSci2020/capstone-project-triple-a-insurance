@@ -18,7 +18,7 @@ public class Maze {
 	private Block start;
 	private Block end;
 	//private Player p;
-	ArrayList<Block> b = new ArrayList<Block>();
+	//ArrayList<Block> b = new ArrayList<Block>();
 	private boolean generated;
 	
 	public Maze (int size) {
@@ -161,7 +161,8 @@ public class Maze {
 	}
 
 	public void update(Player p) {
-		p.act(maze);
+		ArrayList<Block> b= getWalls();
+		p.act(b);
 	}
 
 	public void display(PApplet g) { // this needs to be changed to a smaller radius to avoid unecessary computations.
@@ -184,6 +185,15 @@ public class Maze {
 		player.moveTo(start.getX(), start.getY()-15, start.getZ());
 	}
 	
+	public ArrayList<Block> getWalls() {
+		ArrayList<Block> b = new ArrayList<Block>();
+		for (int i = 0; i <maze.size(); i++) {
+			if (maze.get(i).t == 'w') {
+				b.add(maze.get(i));
+			}
+		}
+		return b;
+	}
 	public Block returnStart() {
 		return start;
 	}

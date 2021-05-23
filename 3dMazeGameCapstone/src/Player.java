@@ -74,20 +74,14 @@ public class Player extends Camera {
 			// dimensions/2 to get the edges
 			float blockSize = b.getSize();
 			float blockHeight = b.getSize();
-			float blockLeft = b.getX(); //- blockSize / 2;
-			float blockRight = b.getX() + blockSize;// / 2;
-			float blockTop = b.getY() - blockHeight / 2;
-			float blockBottom = b.getY() + blockHeight / 2;
-			float blockFront = b.getZ() - blockSize / 2;
-			float blockBack = b.getZ() + blockSize / 2;
-			//System.out.println("x " + b.getX() + " y " + b.getY() + " z " + b.getZ());
-			/*if (b.getX()==0||b.getY()==0||b.getZ()==0) {
-				System.out.println("" + position.x + " "+ position.y + " " +position.z);
-			}
-			if(b.getX()==11||b.getY()==11||b.getZ()==11) {
-				System.out.println("12 " + position.x + " "+ position.y + " " +position.z);
-			}*/
-			/*if(b instanceof Trap) {
+			float bh2 = blockSize/2;
+			float blockLeft = (b.getX() + bh2 - blockSize / 2) * blockSize;
+			float blockRight = (b.getX()+ bh2 + blockSize / 2) * blockSize;
+			float blockTop = (b.getY()+ bh2 - blockHeight / 2) * blockSize;
+			float blockBottom = (b.getY() + bh2 + blockHeight / 2) * blockSize;
+			float blockFront = (b.getZ()+ bh2 - blockSize / 2) * blockSize;
+			float blockBack = (b.getZ() + bh2 + blockSize / 2) * blockSize;
+			if(b instanceof Trap) {
 				trapCollision = true;
 			}
 			// accordingly
@@ -137,7 +131,7 @@ public class Player extends Camera {
 				else {
 					position.z = blockBack + d / 2;
 				}
-			}*/
+			}
 		}
 
 	}

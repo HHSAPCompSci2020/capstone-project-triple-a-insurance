@@ -6,16 +6,21 @@ import processing.core.PApplet;
  *
  */
 public class MenuScreen extends PApplet{
+	public void settings() {
+		fullScreen();
+	}
 	/**
 	 * draws rects as buttons and each do different things
 	 */
 	public void draw() {
-		background(40);
+		background(255);
 		this.textSize(14);
+		fill(0);
 		this.rect(width/7, height/3, width/6, height/8);
-		this.text("Reset the Game", width/7, height/3, width/7+width/6, height/3+height/8);
 		this.rect(width-width/7-width/6, height/3, width/6, height/8);
-		this.text("Return to HomeScreen", width-width/7-width/6, height/3, width-width/7, height/3+height/8);
+		fill(255);
+		this.text("Resume", width/7, height/3, width/7+width/6, height/3+height/8);
+		this.text("Quit Game", width-width/7-width/6, height/3, width-width/7, height/3+height/8);
 	}
 	
 	/**
@@ -40,14 +45,11 @@ public class MenuScreen extends PApplet{
 	 * runs the prompt you wanted
 	 */
 	public void mouseClicked() {
-		if (this.isChosen(mouseX, mouseY, width/7, height/2, width/7+width/6, 2*height/3+height/10)){
+		if (this.isChosen(mouseX, mouseY, width/7, height/3, width/7+width/6, height/3+height/8)){
 			System.out.println("quit");
 		}
-		if (this.isChosen(mouseX, mouseY,width-width/7-width/6, height/2, width-width/7, 2*height/3+height/10)) {
-			System.out.println("reset");
-		}
-		if (this.isChosen(mouseX, mouseY, width/4, 3*height/4, width/4+width/2, 3*height/4+height/8)) {
-			System.out.println("homeScreen");
+		if (this.isChosen(mouseX, mouseY,width-width/7-width/6, height/3, width-width/7, height/3+height/8)) {
+			System.out.println("resume");
 		}
 	}
 	
