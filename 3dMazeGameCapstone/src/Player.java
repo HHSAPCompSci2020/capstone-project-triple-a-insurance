@@ -78,13 +78,6 @@ public class Player extends Camera {
 				// you have to add/substract its
 				// dimensions/2 to get the edges
 				float blockSize = b.getSize();
-				float blockHeight = b.getSize();
-				float blockLeft = b.getX() * blockSize+ blockSize;
-				float blockRight = b.getX() * blockSize ;
-				float blockTop = b.getY() * blockSize;
-				float blockBottom = b.getY() * blockSize + blockSize;
-				float blockFront = b.getZ() * blockSize;
-				float blockBack = b.getZ() * blockSize + blockSize;
 				if(b instanceof Trap) {
 					trapCollision = false;
 				}
@@ -92,8 +85,6 @@ public class Player extends Camera {
 				// accordingly
 				if (b.isPointInCube(left, position.y, position.z)) {
 					// move right
-					System.out.println("" + blockLeft + " " + blockRight + " X "+ position.x + " Z " + position.z);
-					System.out.println("" + b.getX() + " " + b.getY() + " "+ b.getZ());
 					if(trapCollision) {
 						//moveTo(start.x, start.y-15, start.z);
 					}
