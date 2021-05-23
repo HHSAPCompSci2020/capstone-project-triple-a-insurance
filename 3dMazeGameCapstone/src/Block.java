@@ -56,15 +56,15 @@ public class Block {
 		return false;
 	}
 	public float getX() {
-		return x*10;
+		return x;
 	}
 
 	public float getY() {
-		return y*10;
+		return y;
 	}
 
 	public float getZ() {
-		return z*10;
+		return z;
 	}
 
 	public float getSize() {
