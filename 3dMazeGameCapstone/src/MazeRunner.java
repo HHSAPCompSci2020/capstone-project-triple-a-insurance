@@ -35,11 +35,11 @@ public class MazeRunner extends PApplet {
 		this.frameRate(1000);
 		int mode = HomeScreen.MODE;
 		if (mode == 0) {
-			levelTimeLeft = new LevelTimer(200);
+			levelTimeLeft = new LevelTimer(500);
 			maze = new Maze(13);
 		}
 		else {
-			levelTimeLeft = new LevelTimer(300);
+			levelTimeLeft = new LevelTimer(1000);
 			maze = new Maze(25);
 		}
 		player = new Player(maze.getStart());
@@ -90,6 +90,7 @@ public class MazeRunner extends PApplet {
 	 * checks to see the keys that are pressed and checks if menu screen should show up
 	 */
 	public void keyPressed() {
+		m = null;
 		if (!checkKey(keyCode))
 			keys.add(keyCode);
 	}
