@@ -26,7 +26,7 @@ Features List (THE ONLY SECTION THAT CANNOT CHANGE LATER):
 Must-have Features:
 
 
-* A feature we need is a menu screen and a home screen. The home screen will have the options between the multiple levels. There will also be a menu screen ingame that will allow you to quit, see the time left, and to resume.
+* A feature we need is a menu screen and a home screen. The home screen will have the options between the multiple levels. There will also be a menu screen in the game that will allow you to go to HomeScreen.
 
 
 * The maze will be viewed in first person. There will be a renderer that updates the player’s view of the 3D maze.
@@ -77,20 +77,18 @@ Class List:
 Main - the main java class
 HomeScreen - the first screen a person sees that has options to play
 MenuScreen - the menu a players sees when hitting a certain key
-Trap- Creates the various traps throughout the maze extends block
+Trap- Creates the various traps throughout the maze
 Camera - The class that lets you see things in 3D
-Maze - generates the maze and has it in a 3D array
+Maze - keeps track of the maze is a 2D version
 Player - All controls of the player
-MazeRunner - To update the player’s perspective as they move where the maze and player are run
-LevelTimer - is the timer for the class
-Block - is the blocks that make up the maze, are walls or not
+MazeRunner - To update the player’s perspective as they move
 
 
 Credits:
 * Abbas Dohadwala: Rendering of the maze, generation of the maze, README
 
 
-* Aayush Lakhotia: Create the traps, javadocs and UML, README, helping with collision detection, LevelTimer
+* Aayush Lakhotia: Create the traps, javadocs and UML, README, helping with collision detection
 
 
 * Ameya Gandhi: README, help Abbas render the maze, work on controls for the user, collision detection, menuScreen and homeScreen
