@@ -28,7 +28,6 @@ public class MazeRunner extends PApplet {
 	 */
 	public void setup() {
 		strokeWeight(2);
-		//m = new MenuScreen();
 		this.frameRate(1000);
 		if (mode == 0) {
 			levelTimeLeft = new LevelTimer(120);
@@ -38,7 +37,6 @@ public class MazeRunner extends PApplet {
 			levelTimeLeft = new LevelTimer(250);
 			maze = new Maze(28);
 		}
-		m = new MenuScreen();
 		player = new Player(maze.getStart());
 		player.setup(this);
 		//System.out.println("" +  maze.getEnd().x + " " +  maze.getEnd().y + " " +  maze.getEnd().z );
@@ -69,7 +67,7 @@ public class MazeRunner extends PApplet {
 		if (checkKey(KeyEvent.VK_H) && m == null) {
 			
 			m = new MenuScreen();
-			
+			m.updateTimer(levelTimeLeft.getTimeLeft());
 			PApplet.runSketch(new String[]{""}, m);
 			PSurfaceAWT surf2 = (PSurfaceAWT) m.getSurface();
 			PSurfaceAWT.SmoothCanvas canvas2 = (PSurfaceAWT.SmoothCanvas) surf2.getNative();
