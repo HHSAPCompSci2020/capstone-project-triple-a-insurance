@@ -55,15 +55,15 @@ public class MazeRunner extends PApplet {
 		maze.update(player);
 		player.draw(this);
 		text(levelTimeLeft.timeStartingZeros() + "" + levelTimeLeft.getTimeLeft(), width - 20, 20);
-
+		
 		if (checkKey(KeyEvent.VK_W))
-			player.moveZ(1);
+			player.moveZ(4);
 		else if (checkKey(KeyEvent.VK_S))
-			player.moveZ(-1);
+			player.moveZ(-4);
 		if (checkKey(KeyEvent.VK_A))
-			player.moveX(1);
+			player.moveX(4);
 		else if (checkKey(KeyEvent.VK_D))
-			player.moveX(-1);
+			player.moveX(-4);
 		if (checkKey(KeyEvent.VK_H) && m == null) {
 			
 			m = new MenuScreen();
@@ -72,17 +72,13 @@ public class MazeRunner extends PApplet {
 			PSurfaceAWT surf2 = (PSurfaceAWT) m.getSurface();
 			PSurfaceAWT.SmoothCanvas canvas2 = (PSurfaceAWT.SmoothCanvas) surf2.getNative();
 			JFrame window2 = (JFrame)canvas2.getFrame();
-
+			m.setWindow(window2);
 			window2.setBounds(500,50,800, 600);
 			window2.setMinimumSize(new Dimension(100,100));
 			window2.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 			window2.setResizable(true);
 			window2.setAlwaysOnTop(true);
 			window2.requestFocus();
-			
-			if (m.returnResume()) {
-				window2.setVisible(false);
-			}
 		}
 		
 

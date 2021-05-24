@@ -1,3 +1,5 @@
+import javax.swing.JFrame;
+
 import processing.core.PApplet;
 
 /**
@@ -8,6 +10,7 @@ import processing.core.PApplet;
 public class MenuScreen extends PApplet{
 	private boolean resume = false;
 	private int timer;
+	private JFrame window;
 	/**
 	 * draws rects as buttons and each do different things
 	 */
@@ -41,6 +44,11 @@ public class MenuScreen extends PApplet{
 		return false;
 	}
 	
+	
+	public void setWindow(JFrame window) {
+		this.window = window;
+	}
+	
 	/**
 	 * mouseClicked just runs to see if you clicked anything
 	 * runs the prompt you wanted
@@ -49,6 +57,7 @@ public class MenuScreen extends PApplet{
 		if (this.isChosen(mouseX, mouseY, width/7, height/3, width/7+width/6, height/3+height/8)){
 			System.out.println("resume");
 			resume = true;
+			window.dispose();
 		}
 		if (this.isChosen(mouseX, mouseY,width-width/7-width/6, height/3, width-width/7, height/3+height/8)) {
 			System.out.println("quit");

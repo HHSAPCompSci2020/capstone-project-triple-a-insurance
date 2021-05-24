@@ -97,7 +97,7 @@ public class Maze {
 				}
 		}
 		
-		for (int i = 0; i < size/3; i++) {
+		for (int i = 0; i < 2*size; i++) {
 			int rand = (int)(Math.random())*copyToCheck.size();
 			int x = copyToCheck.get(rand)[0];
 			int y = copyToCheck.get(rand)[1];
