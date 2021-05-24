@@ -35,7 +35,7 @@ public class MazeRunner extends PApplet {
 		}
 		else {
 			levelTimeLeft = new LevelTimer(250);
-			maze = new Maze(28);
+			maze = new Maze(25);
 		}
 		player = new Player(maze.getStart());
 		player.setup(this);
