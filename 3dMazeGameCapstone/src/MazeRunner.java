@@ -8,6 +8,11 @@ import javax.swing.JFrame;
 import processing.awt.PSurfaceAWT;
 import processing.core.*;
 
+/**
+ * 
+ * @author asampath803 edits: Abbas and Ameya
+ *
+ */
 public class MazeRunner extends PApplet {
 	private ArrayList<Integer> keys = new ArrayList<Integer>();
 	private Player player;
