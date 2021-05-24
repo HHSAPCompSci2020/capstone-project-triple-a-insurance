@@ -1,6 +1,7 @@
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.Timer;
 /**
@@ -16,6 +17,12 @@ public class LevelTimer {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if(timeLeft > 0) {
+				try {
+					TimeUnit.SECONDS.sleep(1);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				timeLeft = timeLeft - 1;
 			}
 			

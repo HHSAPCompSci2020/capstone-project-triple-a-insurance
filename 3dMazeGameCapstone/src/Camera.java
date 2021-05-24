@@ -71,6 +71,10 @@ public class Camera {
 		tilt = 0;
 	}
 
+	/**
+	 * Sets up all the things to render the perspective
+	 * @param g the renderer for the perspective
+	 */
 	public void setup(PApplet g) {
 		g.perspective(fov, (float) g.width / (float) g.height, 0.01f, viewDistance);
 		// Moves the mouse to the center of the screen at the start of the game
@@ -78,6 +82,10 @@ public class Camera {
 				(int) ((GLWindow) g.getSurface().getNative()).getY() + g.height / 2);
 	}
 
+	/**
+	 * Displays the perspective of the player
+	 * @param g The renderer for the perspective
+	 */
 	public void draw(PApplet g) {
 		// Get the coordinates of the borders of the window
 		int top = ((GLWindow) g.getSurface().getNative()).getY();
@@ -154,7 +162,14 @@ public class Camera {
 		g.camera(position.x, position.y, position.z, center.x, center.y, center.z, 0, 1, 0);
 	}
 
-	// "Clamp" the x value to within the range of min-max
+	
+	/**
+	 * Clamps the x value to within the range of min-max
+	 * @param x The int x input value
+	 * @param min The minimum value x can be
+	 * @param max The maximum value the x can be
+	 * @return
+	 */
 	private float clamp(float x, float min, float max) {
 		if (x > max)
 			return max;
@@ -163,6 +178,10 @@ public class Camera {
 		return x;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public PVector getForward() {
 		return forward;
 	}
