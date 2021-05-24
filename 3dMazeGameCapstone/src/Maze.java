@@ -28,6 +28,9 @@ public class Maze {
 		generate();
 	}
 	
+	/**
+	 * Generates a 3-dimensional maze withe 1 exit randomly
+	 */
 	private void generate () {
 		
 		ArrayList<Integer[]> copyToCheck = new ArrayList<Integer[]> ();
