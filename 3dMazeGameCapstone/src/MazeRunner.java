@@ -90,7 +90,6 @@ public class MazeRunner extends PApplet {
 	 * checks to see the keys that are pressed and checks if menu screen should show up
 	 */
 	public void keyPressed() {
-		m = null;
 		if (!checkKey(keyCode))
 			keys.add(keyCode);
 	}
@@ -99,8 +98,12 @@ public class MazeRunner extends PApplet {
 	 * removes a key from keyPressed
 	 */
 	public void keyReleased() {
-		while (checkKey(keyCode))
+		while (checkKey(keyCode)) {
 			keys.remove(new Integer(keyCode));
+		}
+		if (!checkKey(KeyEvent.VK_H)) {
+			m = null;
+		}
 	}
 
 	/**
