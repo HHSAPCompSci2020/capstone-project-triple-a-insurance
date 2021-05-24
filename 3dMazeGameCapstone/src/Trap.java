@@ -7,13 +7,11 @@ import processing.core.PApplet;
 public class Trap extends Block{
 	private float x, y, z, size;
 	private int fillColor;
-	private boolean visited;
 	
 
 	public Trap(int x, int y, int z) {
 		super(x, y, z, 't');
-		fillColor = (int) (100);
-		visited = false;
+		fillColor = (int) (fillColor);
 	}
 
 	public void display(PApplet g) {
