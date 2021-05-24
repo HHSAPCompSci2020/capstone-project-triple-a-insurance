@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
 
@@ -12,7 +11,6 @@ import processing.core.PApplet;
  */
 public class Maze {
 	
-	private int flags = 0;
 	private int size;
 	private ArrayList<Block> maze;
 	private Block start;
@@ -137,10 +135,11 @@ public class Maze {
 		}
 		b.t = ' ';
 	}
-	
+	/*
 	private double random(double lower, double upper) {
 		return Math.random() * (upper - lower) + lower;
 	}
+	*/
 
 	public void update(Player p) {
 		ArrayList<Block> b= getWalls();

@@ -73,7 +73,6 @@ public class Player extends Camera {
 				// block position is in the center of the block so
 				// you have to add/substract its
 				// dimensions/2 to get the edges
-				float blockSize = b.getSize();
 				if(b instanceof Trap) {
 					trapCollision = true;
 				}

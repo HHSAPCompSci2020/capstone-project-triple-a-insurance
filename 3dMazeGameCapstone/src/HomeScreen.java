@@ -9,7 +9,6 @@ import processing.core.PImage;
 public class HomeScreen extends PApplet{
 	MazeRunner game;
 	PImage backgroundImg;
-	private int mode;
 	/**
 	 * loads in all the images and creates the mazerunner
 	 */
