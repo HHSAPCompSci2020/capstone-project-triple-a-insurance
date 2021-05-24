@@ -47,23 +47,20 @@ public class MazeRunner extends PApplet {
 	 * draws all the players and sees if the player is moving
 	 */
 	public void draw() {
-		
-		
 		noCursor();
 		background(51);
 		maze.display(this);
 		maze.update(player);
 		player.draw(this);
-		text(levelTimeLeft.timeStartingZeros() + "" + levelTimeLeft.getTimeLeft(), width - 20, 20);
-		
+		levelTimeLeft.startTimer();		
 		if (checkKey(KeyEvent.VK_W))
-			player.moveZ(4);
+			player.moveZ(1);
 		else if (checkKey(KeyEvent.VK_S))
-			player.moveZ(-4);
+			player.moveZ(-1);
 		if (checkKey(KeyEvent.VK_A))
-			player.moveX(4);
+			player.moveX(1);
 		else if (checkKey(KeyEvent.VK_D))
-			player.moveX(-4);
+			player.moveX(-1);
 		if (checkKey(KeyEvent.VK_H) && m == null) {
 			
 			m = new MenuScreen();
