@@ -14,6 +14,9 @@ public class Trap extends Block{
 		fillColor = (int) (fillColor);
 	}
 
+	/**
+	 * Displays the trap
+	 */
 	public void display(PApplet g) {
 		g.pushMatrix();
 		g.translate(x, y, z);

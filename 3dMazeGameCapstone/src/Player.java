@@ -129,14 +129,26 @@ public class Player extends Camera {
 		}
 	}
 
+	/**
+	 * Gets the width of the box
+	 * @return the width of the box
+	 */
 	public float getWidth() {
 		return w;
 	}
-
+	
+	/**
+	 * Gets the height of the box
+	 * @return the height of the box
+	 */
 	public float getHeight() {
 		return h;
 	}
 
+	/**
+	 * Gets the depth of the box
+	 * @return the depth of the box
+	 */
 	public float getDepth() {
 		return d;
 	}
