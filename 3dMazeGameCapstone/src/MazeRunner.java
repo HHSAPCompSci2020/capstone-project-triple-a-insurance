@@ -59,13 +59,13 @@ public class MazeRunner extends PApplet {
 		text(levelTimeLeft.timeStartingZeros() + "" + levelTimeLeft.getTimeLeft(), width - 20, 20);
 
 		if (checkKey(KeyEvent.VK_W))
-			player.moveZ(1);
+			player.moveZ(4);
 		else if (checkKey(KeyEvent.VK_S))
-			player.moveZ(-1);
+			player.moveZ(-4);
 		if (checkKey(KeyEvent.VK_A))
-			player.moveX(1);
+			player.moveX(4);
 		else if (checkKey(KeyEvent.VK_D))
-			player.moveX(-1);
+			player.moveX(-4);
 		if (checkKey(KeyEvent.VK_H) && m == null) {
 			
 			m = new MenuScreen();
