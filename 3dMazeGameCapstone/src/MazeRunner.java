@@ -28,7 +28,6 @@ public class MazeRunner extends PApplet {
 	 */
 	public void setup() {
 		strokeWeight(2);
-		//m = new MenuScreen();
 		this.frameRate(1000);
 		if (mode == 0) {
 			levelTimeLeft = new LevelTimer(120);
@@ -38,7 +37,6 @@ public class MazeRunner extends PApplet {
 			levelTimeLeft = new LevelTimer(250);
 			maze = new Maze(28);
 		}
-		m = new MenuScreen();
 		player = new Player(maze.getStart());
 		player.setup(this);
 		//System.out.println("" +  maze.getEnd().x + " " +  maze.getEnd().y + " " +  maze.getEnd().z );
@@ -57,7 +55,7 @@ public class MazeRunner extends PApplet {
 		maze.update(player);
 		player.draw(this);
 		text(levelTimeLeft.timeStartingZeros() + "" + levelTimeLeft.getTimeLeft(), width - 20, 20);
-
+		
 		if (checkKey(KeyEvent.VK_W))
 			player.moveZ(4);
 		else if (checkKey(KeyEvent.VK_S))
@@ -69,22 +67,18 @@ public class MazeRunner extends PApplet {
 		if (checkKey(KeyEvent.VK_H) && m == null) {
 			
 			m = new MenuScreen();
-			
+			m.updateTimer(levelTimeLeft.getTimeLeft());
 			PApplet.runSketch(new String[]{""}, m);
 			PSurfaceAWT surf2 = (PSurfaceAWT) m.getSurface();
 			PSurfaceAWT.SmoothCanvas canvas2 = (PSurfaceAWT.SmoothCanvas) surf2.getNative();
 			JFrame window2 = (JFrame)canvas2.getFrame();
-
+			m.setWindow(window2);
 			window2.setBounds(500,50,800, 600);
 			window2.setMinimumSize(new Dimension(100,100));
 			window2.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 			window2.setResizable(true);
 			window2.setAlwaysOnTop(true);
 			window2.requestFocus();
-			
-			if (m.returnResume()) {
-				window2.setVisible(false);
-			}
 		}
 		
 

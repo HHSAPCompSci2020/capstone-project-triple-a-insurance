@@ -1,3 +1,5 @@
+import javax.swing.JFrame;
+
 import processing.core.PApplet;
 
 /**
@@ -7,6 +9,8 @@ import processing.core.PApplet;
  */
 public class MenuScreen extends PApplet{
 	private boolean resume = false;
+	private int timer;
+	private JFrame window;
 	/**
 	 * draws rects as buttons and each do different things
 	 */
@@ -19,6 +23,8 @@ public class MenuScreen extends PApplet{
 		fill(255);
 		this.text("Resume", width/7, height/3, width/7+width/6, height/3+height/8);
 		this.text("Quit Game", width-width/7-width/6, height/3, width-width/7, height/3+height/8);
+		fill(0);
+		this.text("Time Left: " + timer, width/4, 6*width/7);
 	}
 	
 	/**
@@ -38,6 +44,11 @@ public class MenuScreen extends PApplet{
 		return false;
 	}
 	
+	
+	public void setWindow(JFrame window) {
+		this.window = window;
+	}
+	
 	/**
 	 * mouseClicked just runs to see if you clicked anything
 	 * runs the prompt you wanted
@@ -46,6 +57,7 @@ public class MenuScreen extends PApplet{
 		if (this.isChosen(mouseX, mouseY, width/7, height/3, width/7+width/6, height/3+height/8)){
 			System.out.println("resume");
 			resume = true;
+			window.dispose();
 		}
 		if (this.isChosen(mouseX, mouseY,width-width/7-width/6, height/3, width-width/7, height/3+height/8)) {
 			System.out.println("quit");
@@ -59,6 +71,13 @@ public class MenuScreen extends PApplet{
 	 */
 	public boolean returnResume() {
 		return resume;
+	}
+	
+	/**
+	 * shows the timer in the class
+	 */
+	public void updateTimer(int time) {
+		timer = time;
 	}
 	
 }
