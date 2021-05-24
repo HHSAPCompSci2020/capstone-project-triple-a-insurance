@@ -99,13 +99,6 @@ public class Maze {
 				}
 		}
 		
-		/*for (int i = 0; i < size * size; i++) {
-			System.out.print(get(0, i / size, i % size).t);
-			if ((i+1)%size == 0) {
-				System.out.println();
-			}
-		}*/
-		
 		for (int i = 0; i < size/3; i++) {
 			int rand = (int)(Math.random())*copyToCheck.size();
 			int x = copyToCheck.get(rand)[0];

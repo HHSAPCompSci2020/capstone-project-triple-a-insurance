@@ -42,6 +42,7 @@ public class Block {
 			g.fill(100, (255), 100);
 			g.fill(100, 100, 255, 100);
 			g.box(SIZE);
+			g.popMatrix();
 		}
 	}
 
