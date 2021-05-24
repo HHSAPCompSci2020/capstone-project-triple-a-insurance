@@ -107,6 +107,13 @@ public class Maze {
 			}
 		}*/
 		
+		for (int i = 0; i < size/3; i++) {
+			int rand = (int)(Math.random())*copyToCheck.size();
+			int x = copyToCheck.get(rand)[0];
+			int y = copyToCheck.get(rand)[1];
+			int z = copyToCheck.get(rand)[2];
+			set(x, y, z, new Trap (x, y, z));
+		}
 		
 		start.t = ' '; // sets the type of the start and end blocks
 		end.t = ' ';
@@ -162,6 +169,10 @@ public class Maze {
 
 	public Block get (int x, int y, int z) {
 		return maze.get(x*size*size + y*size + z);
+	}
+	
+	private void set (int x, int y, int z, Block b) {
+		maze.set(x*size*size + y*size + z, b);
 	}
 	
 	public void setPlayerAtStart(Player player) {
