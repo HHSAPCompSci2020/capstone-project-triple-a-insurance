@@ -6,9 +6,7 @@ import processing.core.PApplet;
  *
  */
 public class MenuScreen extends PApplet{
-	public void settings() {
-		fullScreen();
-	}
+	private boolean resume = false;
 	/**
 	 * draws rects as buttons and each do different things
 	 */
@@ -47,11 +45,20 @@ public class MenuScreen extends PApplet{
 	public void mouseClicked() {
 		if (this.isChosen(mouseX, mouseY, width/7, height/3, width/7+width/6, height/3+height/8)){
 			System.out.println("resume");
+			resume = true;
 		}
 		if (this.isChosen(mouseX, mouseY,width-width/7-width/6, height/3, width-width/7, height/3+height/8)) {
 			System.out.println("quit");
 			System.exit(5);
 		}
+	}
+	
+	/**
+	 * returns the resume field
+	 * @return boolean whether to resume or not
+	 */
+	public boolean returnResume() {
+		return resume;
 	}
 	
 }

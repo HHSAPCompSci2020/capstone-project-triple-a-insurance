@@ -78,8 +78,12 @@ public class MazeRunner extends PApplet {
 			window2.setMinimumSize(new Dimension(100,100));
 			window2.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 			window2.setResizable(true);
-			
+			window2.setAlwaysOnTop(true);
 			window2.requestFocus();
+			
+			if (m.returnResume()) {
+				window2.setVisible(false);
+			}
 		}
 		
 
