@@ -75,7 +75,6 @@ public class Maze {
 				toCheck.add(thing);
 			}
 			Collections.shuffle(toCheck); // Randomizes the order of the list of coordinates to check.
-			System.out.println(toCheck.size());
 			for (Integer[] coords : toCheck) {
 				Block curr = get(coords[0], coords[1], coords[2]);
 				ArrayList<Block> neighbors = getAdj(curr);
