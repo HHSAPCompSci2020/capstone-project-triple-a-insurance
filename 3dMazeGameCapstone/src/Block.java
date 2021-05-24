@@ -27,6 +27,10 @@ public class Block {
 		tree.add(this);
 	}
 	
+	/**
+	 * Displays the block or trap.
+	 * @param g The renderer for the block.
+	 */
 	public void display(PApplet g) {
 		if (t == 'w') {
 			g.pushMatrix();
@@ -45,6 +49,13 @@ public class Block {
 		}
 	}
 
+	/**
+	 * Checks if a point is the block
+	 * @param x the X-coordinate of the point.
+	 * @param y the Y-coordinate of the point
+	 * @param z the Z-coordinate of the point
+	 * @return
+	 */
 	public boolean isPointInCube(float x, float y, float z) {
 		// the x y z coords of the block are in the center so +/- by size/2 in all
 		// directions to get the edges
@@ -68,30 +79,53 @@ public class Block {
 
 		return false;
 	}
+	/**
+	 * Gets the X-coordinate of the block
+	 * @return the X-coordinate of the block
+	 */
 	public float getX() {
 		return x;
 	}
-
+	/**
+	 * Gets the Y-coordinate of the block
+	 * @return the Y-coordinate of the block
+	 */
 	public float getY() {
 		return y;
 	}
-
+	/**
+	 * Gets the XZ-coordinate of the block
+	 * @return the Z-coordinate of the block
+	 */
 	public float getZ() {
 		return z;
 	}
 
+	/**
+	 * Gets the the size of the block
+	 * @return the size of the block
+	 */
 	public float getSize() {
 		return SIZE;
 	}
-	
+	/**
+	 * Moves the block in the y direction by 5 pixels
+	 */
 	public void moveDown(){
 	    y += 5;
 	}
 	
+	/**
+	 * Sets the block as visited or not
+	 * @param b A boolean input for the block
+	 */
 	public void setVisited(boolean b) {
 		visited = b;
 	}
-	
+	/**
+	 * Checks if the block has been visited or not
+	 * @return a boolean thats sees if the block has been visited 
+	 */
 	public boolean getVisited() {
 		return visited;
 	}
