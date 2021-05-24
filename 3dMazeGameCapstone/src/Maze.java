@@ -112,6 +112,11 @@ public class Maze {
 		end.t = 'e';
 	}
 	
+	/**
+	 * With the block as the base it finds all adjacent blocks and puts them in an ArrayList
+	 * @param b the current block
+	 * @return All adjacent blocks
+	 */
 	public ArrayList<Block> getAdj (Block b) { // gets the adjacent blocks
 		ArrayList<Block> neighbors = new ArrayList<Block> ();
 		if (b.x+1 < size) neighbors.add(get(b.x+1, b.y, b.z));
@@ -124,6 +129,10 @@ public class Maze {
 	}
 	
 	
+	/**
+	 * 
+	 * @param b
+	 */
 	private void join (Block b) {
 		ArrayList<Block> neighbors = getAdj(b); // All of the neighbors.
 		for (Block neighbor: neighbors) { // Iterates through all of the neighbors.
@@ -144,16 +153,30 @@ public class Maze {
 	}
 	*/
 
+	/**
+	 * Updates the state of the blocks
+	 * @param p the player object
+	 */
 	public void update(Player p) {
 		ArrayList<Block> b= getWalls();
 		p.act(b);
 	}
 
+	/**
+	 * Displays all the blocks in the maze
+	 * @param g the renderer Panel
+	 */
 	public void display(PApplet g) { // this needs to be changed to a smaller radius to avoid unecessary computations.
 		for (Block b : maze)
 			b.display(g);
 	}
 	
+	/**
+	 * 
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	public boolean disjoint (Set<Block> a, Set<Block> b) {
 		for (Block block : a) {
 			if (b.contains(block)) return false;
@@ -161,18 +184,40 @@ public class Maze {
 		return true;
 	}
 
+	/**
+	 * Returns the block at the coordiantes specified
+	 * @param x X-Coordinate of the block
+	 * @param y Y-Coordinate of the block
+	 * @param z Z-Coordinate of the block
+	 * @return the block at the position of the coordinates
+	 */
 	public Block get (int x, int y, int z) {
 		return maze.get(x*size*size + y*size + z);
 	}
 	
+	/**
+	 * Puts a block at the coordinates specified
+	 * @param x X-Coordinate of the block
+	 * @param y Y-Coordinate of the block
+	 * @param z Z-Coordinate of the block
+	 * @param b A block to be set
+	 */
 	private void set (int x, int y, int z, Block b) {
 		maze.set(x*size*size + y*size + z, b);
 	}
 	
+	/**
+	 * Returns the player to the start of the maze
+	 * @param player the player object that is being controlled
+	 */
 	public void setPlayerAtStart(Player player) {
 		player.moveTo(start.getX()*10, start.getY()*10, start.getZ()*10);
 	}
 	
+	/**
+	 * Finds all the walls in the maze and returns them in an ArrayList
+	 * @return ArrayList consisting of the walls in the maze
+	 */
 	public ArrayList<Block> getWalls() {
 		ArrayList<Block> b = new ArrayList<Block>();
 		for (int i = 0; i <maze.size(); i++) {
@@ -182,18 +227,35 @@ public class Maze {
 		}
 		return b;
 	}
+	
+	/**
+	 * returns the starting block of the maze
+	 * @return the starting block of the maze
+	 */
 	public Block returnStart() {
 		return start;
 	}
 	
+	/**
+	 * Checks if the maze has been generated
+	 * @return a boolean of the maze generation
+	 */
 	public boolean generated () {
 		return generated;
 	}
 	
+	/**
+	 * Gets the block at the start of the maze
+	 * @return the block at the start
+	 */
 	public Block getStart () {
 		return start;
 	}
 	
+	/**
+	 * Gets the block at the end of the maze
+	 * @return end of the maze block
+	 */
 	public Block getEnd () {
 		return end;
 	}
