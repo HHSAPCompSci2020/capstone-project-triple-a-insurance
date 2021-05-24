@@ -36,6 +36,12 @@ public class Block {
 			g.fill(100, 255, 100);
 			g.box(SIZE);
 			g.popMatrix();
+		} else if (t == 'e') {
+			g.pushMatrix();
+			g.translate(x*SIZE, y*SIZE, z*SIZE);
+			g.fill(100, (255), 100);
+			g.fill(100, 100, 255, 100);
+			g.box(SIZE);
 		}
 	}
 

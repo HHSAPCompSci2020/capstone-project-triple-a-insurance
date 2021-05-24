@@ -75,7 +75,6 @@ public class Maze {
 				toCheck.add(thing);
 			}
 			Collections.shuffle(toCheck); // Randomizes the order of the list of coordinates to check.
-			System.out.println(toCheck.size());
 			for (Integer[] coords : toCheck) {
 				Block curr = get(coords[0], coords[1], coords[2]);
 				ArrayList<Block> neighbors = getAdj(curr);
@@ -116,7 +115,7 @@ public class Maze {
 		}
 		
 		start.t = ' '; // sets the type of the start and end blocks
-		end.t = ' ';
+		end.t = 'e';
 	}
 	
 	public ArrayList<Block> getAdj (Block b) { // gets the adjacent blocks
