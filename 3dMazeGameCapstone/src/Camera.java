@@ -179,109 +179,210 @@ public class Camera {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Gets the vector for the forard direction
+	 * @return the vector for the forward direction
 	 */
 	public PVector getForward() {
 		return forward;
 	}
 
+	/**
+	 * Gets the current position of the camera
+	 * @return the current position
+	 */
 	public PVector getPosition() {
 		return position;
 	}
-
+	
+	/**
+	 * Gets the current velocity of the camera
+	 * @return the current velocity
+	 */
 	public PVector getVelocity() {
 		return velocity;
 	}
 
+	/**
+	 * Gets the current center of the camera
+	 * @return the current center
+	 */
 	public PVector getCenter() {
 		return center;
 	}
 
+	/**
+	 * Gets the current vector for the right direction of the camera
+	 * @return the current vector of the right direction
+	 */
 	public PVector getRight() {
 		return right;
 	}
 
+	/**
+	 * Gets the current pan of the camera
+	 * @return the current pan
+	 */
 	public float getPan() {
 		return pan;
 	}
-
+	
+	/**
+	 * Gets the current tilt of the camera
+	 * @return the current tilt
+	 */
 	public float getTilt() {
 		return tilt;
 	}
-
+	
+	/**
+	 * Moves the camera in the x direction by dir
+	 * @param dir amount to be moved
+	 */
 	public void moveX(int dir) {
 		velocity.add(PVector.mult(right, speed * dir));
 	}
-
+	
+	/**
+	 * Moves the camera in the z direction by dir
+	 * @param dir amount to be moved
+	 */
 	public void moveZ(int dir) {
 		velocity.add(PVector.mult(forward, speed * dir));
 	}
-
+	/**
+	 * Returns the current X-Sensitivity of the camera
+	 * @return the current X Sensitivity
+	 */
 	public float xSensitivity() {
 		return xSensitivity;
 	}
 
+	/**
+	 * Returns the current Y-Sensitivity of the camera
+	 * @return the current Y Sensitivity
+	 */
 	public float ySensitivity() {
 		return ySensitivity;
 	}
-
+	/**
+	 * sets the XSensitivity of the camera
+	 * @param f the new X-Sensitivity
+	 */
 	public void setXSensitivity(float f) {
 		xSensitivity = f;
 	}
 
+	/**
+	 * sets the YSensitivity of the camera
+	 * @param f the new Y-Sensitivity
+	 */
 	public void setYSensitivity(float f) {
 		ySensitivity = f;
 	}
 
+	/**
+	 * Gets the speed of the camera
+	 * @return the current speed
+	 */
 	public float getSpeed() {
 		return speed;
 	}
 
+	/**
+	 * sets the speed of the camera
+	 * @param f the new speed
+	 */
 	public void setSpeed(float f) {
 		speed = f;
 	}
 
+	/**
+	 * Gets the current friction of the camera
+	 * @return the current friction
+	 */
 	public float getFriction() {
 		return friction;
 	}
 
+	/**
+	 * Sets the friction of the camera
+	 * @param f the new friction
+	 */
 	public void setFriction(float f) {
 		friction = f;
 	}
 
+	/**
+	 * Gets the current FOV of the camera
+	 * @return the current FOV
+	 */
 	public float getFOV() {
 		return fov;
 	}
 
+	/**
+	 * Sets the FOV of the camera
+	 * @param f the new FOV
+	 */
 	public void setFOV(float f) {
 		fov = f;
 	}
 
+	/**
+	 * Gets the viewDistance of the camera
+	 * @return the view distance
+	 */
 	public float getViewDistance() {
 		return viewDistance;
 	}
 
+	/**
+	 * sets the viewDistance of the camera
+	 * @param f a float that is the view distance
+	 */
 	public void setViewDistance(float f) {
 		viewDistance = f;
 	}
 
+	/**
+	 * Gets the mouse point and returns it
+	 * @return the mouse
+	 */
 	public Point getMouse() {
 		return mouse;
 	}
 
+	/**
+	 * Sets the mouse at the coordinates of the mouse passed in
+	 * @param mouse a point that is a mouse
+	 */
 	public void setMouse(Point mouse) {
 		robot.mouseMove(mouse.x, mouse.y);
 	}
 
+	/**
+	 * Sets the mouse at the coordinates specified
+	 * @param x X-Coordinate of the mouse
+	 * @param y Y-Coordinate of the mouse
+	 */
 	public void setMouse(int x, int y) {
 		robot.mouseMove(x, y);
 	}
 
+	/**
+	 * sets the pan of the camera by the angle specified
+	 * @param angle the angle for the pan
+	 */
 	public void setPan(double angle) {
 		pan = (float) angle;
 	}
 	
+	/**
+	 * Sets the position of the perspective at the coordinates specified
+	 * @param x X-Coordinate of the camera
+	 * @param y Y-Coordinate of the camera
+	 * @param z Z-Coordinate of the camera
+	 */
 	public void setPosition(int x,int y,int z) {
 		position.x = x;
 		position.y = y;
