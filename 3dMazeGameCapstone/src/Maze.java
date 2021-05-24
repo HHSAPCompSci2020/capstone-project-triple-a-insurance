@@ -116,7 +116,7 @@ public class Maze {
 		}
 		
 		start.t = ' '; // sets the type of the start and end blocks
-		end.t = ' ';
+		end.t = 'e';
 	}
 	
 	public ArrayList<Block> getAdj (Block b) { // gets the adjacent blocks
