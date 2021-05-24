@@ -46,10 +46,11 @@ public class MenuScreen extends PApplet{
 	 */
 	public void mouseClicked() {
 		if (this.isChosen(mouseX, mouseY, width/7, height/3, width/7+width/6, height/3+height/8)){
-			System.out.println("quit");
+			System.out.println("resume");
 		}
 		if (this.isChosen(mouseX, mouseY,width-width/7-width/6, height/3, width-width/7, height/3+height/8)) {
-			System.out.println("resume");
+			System.out.println("quit");
+			System.exit(5);
 		}
 	}
 	

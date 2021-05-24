@@ -19,7 +19,7 @@ public class MazeRunner extends PApplet {
 	 * makes the screen some size
 	 */
 	public void settings() {
-		size(1000,1000,P3D);
+		size(3*displayWidth/4,3*displayHeight/4,P3D);
 		//fullScreen(P3D);
 		
 	}
@@ -40,7 +40,7 @@ public class MazeRunner extends PApplet {
 		}
 		player = new Player(maze.getStart());
 		player.setup(this);
-		
+		//System.out.println("" +  maze.getEnd().x + " " +  maze.getEnd().y + " " +  maze.getEnd().z );
 		maze.setPlayerAtStart(player);
 		
 	}
@@ -79,7 +79,7 @@ public class MazeRunner extends PApplet {
 			window2.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 			window2.setResizable(true);
 			
-			canvas2.requestFocus();
+			window2.requestFocus();
 		}
 		
 
