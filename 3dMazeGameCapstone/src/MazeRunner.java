@@ -10,7 +10,6 @@ import processing.core.*;
 
 public class MazeRunner extends PApplet {
 	private ArrayList<Integer> keys = new ArrayList<Integer>();
-	public int mode = 0;
 	private Player player;
 	private Maze maze;
 	private MenuScreen m;
@@ -29,6 +28,7 @@ public class MazeRunner extends PApplet {
 	public void setup() {
 		strokeWeight(2);
 		this.frameRate(1000);
+		int mode = HomeScreen.MODE;
 		if (mode == 0) {
 			levelTimeLeft = new LevelTimer(200);
 			maze = new Maze(13);

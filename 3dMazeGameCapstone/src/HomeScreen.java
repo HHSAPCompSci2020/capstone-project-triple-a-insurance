@@ -9,6 +9,7 @@ import processing.core.PImage;
 public class HomeScreen extends PApplet{
 	MazeRunner game;
 	PImage backgroundImg;
+	public static int MODE = 0;
 	/**
 	 * loads in all the images and creates the mazerunner
 	 */
@@ -66,15 +67,16 @@ public class HomeScreen extends PApplet{
 	 */
 	public void mouseClicked() {
 		if (this.isChosen(mouseX, mouseY, width/7, height/2, width/7+width/6, 2*height/3+height/10)){
-			game.mode = 0;
+			
 			System.out.println("easy mode");
 		}
 		if (this.isChosen(mouseX, mouseY,width-width/7-width/6, height/2, width-width/6, 2*height/3+height/10)) {
 			System.out.println("hard mode");
-			game.mode = 1;
+			MODE = 1;
+			
 		}
 		if (this.isChosen(mouseX, mouseY, width/4, 3*height/4, width/4+width/2, 3*height/4+height/8)) {
-			game.mode = 0;
+			
 			System.out.println("play game");
 			
 			PApplet.main("MazeRunner");
