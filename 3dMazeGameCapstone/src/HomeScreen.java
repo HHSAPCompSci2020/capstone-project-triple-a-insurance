@@ -37,7 +37,7 @@ public class HomeScreen extends PApplet{
 		textSize(16);
 		textAlign(LEFT);
 		fill(100);
-		text("Instructions: w,a,s,d to move around in the direction\nyou are facing, avoid traps and try to\nget to the blue colored block",
+		text("Instructions: w,a,s,d to move around in the direction\nyou are facing, avoid purple traps and try to\nget to the blue colored block\nyou can fly over traps",
 				width/4+10, height/3,width/4+width/2, height/3+height/10);
 		text("Easy Mode", width/6, height/2, width/6+width/7, 2*height/3+height/10);
 		text("Hard Mode", width-width/7-width/6, height/2, width-width/6, 2*height/3+height/10);
