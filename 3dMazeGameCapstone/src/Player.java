@@ -75,7 +75,7 @@ public class Player extends Camera {
 				// dimensions/2 to get the edges
 				if (b.isPointInCube(left, position.y, position.z)) {
 					if(b instanceof Trap) {
-						moveTo(start.x, start.y, start.z);
+						moveTo(start.x*10, start.y*10, start.z*10);
 					}
 					else {
 						moveTo(position.x-0.25f, position.y, position.z);
@@ -84,7 +84,7 @@ public class Player extends Camera {
 				} if (b.isPointInCube(right, position.y, position.z)) {
 					// move left
 					if(b instanceof Trap) {
-						moveTo(start.x, start.y-15, start.z);
+						moveTo(start.x*10, start.y*10, start.z*10);
 					}
 					else {
 						moveTo(position.x + 0.25f, position.y, position.z);
@@ -92,21 +92,25 @@ public class Player extends Camera {
 				}
 				if (b.isPointInCube(position.x, top, position.z)) {// move down
 					if(b instanceof Trap) {
-						moveTo(start.x, start.y, start.z);
+						moveTo(start.x*10, start.y*10, start.z*10);
 					}
 					else {
 						moveTo(position.x, position.y + 0.25f, position.z);
 					}
 				} if (b.isPointInCube(position.x, bottom, position.z)) {
-					// move up/grounded
-					moveTo(position.x, position.y - 0.25f, position.z);
-					velocity.y = 0;
+					if(b instanceof Trap) {
+						moveTo(start.x*10, start.y*10, start.z*10);
+					}
+					else {
+						moveTo(position.x, position.y - 0.25f, position.z);
+						velocity.y = 0;
 					//grounded = true;
+					}
 				}
 				if (b.isPointInCube(position.x, position.y, front)) {
 					// move back
 					if(b instanceof Trap) {
-						moveTo(start.x, start.y, start.z);
+						moveTo(start.x*10, start.y*10, start.z*10);
 					}
 					else {
 						moveTo(position.x, position.y, position.z - 0.25f);
@@ -115,7 +119,7 @@ public class Player extends Camera {
 				} if (b.isPointInCube(position.x, position.y, back)) {
 					// move forward
 					if(b instanceof Trap) {
-						moveTo(start.x, start.y, start.z);
+						moveTo(start.x*10, start.y*10, start.z*10);
 					}
 					else {
 						moveTo(position.x, position.y, position.z + 0.5f);
