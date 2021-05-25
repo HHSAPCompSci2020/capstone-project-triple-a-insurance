@@ -131,8 +131,8 @@ public class Maze {
 	
 	
 	/**
-	 * 
-	 * @param b
+	 * This joins two walls together as part of Kruskal's maze generation
+	 * @param b block to check
 	 */
 	private void join (Block b) {
 		ArrayList<Block> neighbors = getAdj(b); // All of the neighbors.
@@ -173,10 +173,11 @@ public class Maze {
 	}
 	
 	/**
-	 * 
-	 * @param a
-	 * @param b
-	 * @return
+	 * This method checks if the two sets have the same block in them if so
+	 * return true
+	 * @param a A set or collection of blocks
+	 * @param b A set or collection of blocks
+	 * @return boolean true or false
 	 */
 	public boolean disjoint (Set<Block> a, Set<Block> b) {
 		for (Block block : a) {
