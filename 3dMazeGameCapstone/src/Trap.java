@@ -10,18 +10,12 @@ public class Trap extends Block{
 	
 
 	public Trap(int x, int y, int z) {
-		super(x, y, z, 't');
-		fillColor = (int) (fillColor);
+		super(x, y, z, 'w');
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		gradient = 255;
+		//fillColor = (int) (fillColor);
 	}
 
-	/**
-	 * Displays the trap
-	 */
-	public void display(PApplet g) {
-		g.pushMatrix();
-		g.translate(x, y, z);
-		g.fill(0,200,200);
-		g.box(size, size, size);
-		g.popMatrix();
-	}
 }

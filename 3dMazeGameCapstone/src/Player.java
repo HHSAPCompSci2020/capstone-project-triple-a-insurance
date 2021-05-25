@@ -12,7 +12,6 @@ public class Player extends Camera {
 	private float w, h, d;
 	//private boolean grounded;
 	//private float gravity;
-	private boolean trapCollision = false;
 	//private int ix, iy, iz;
 	private Block start;
 	private boolean canAct = true;
@@ -21,6 +20,7 @@ public class Player extends Camera {
 		// speed is at .12f max
 		this(5, 3, 1, .04f, .5f, .5f, .75f, PConstants.PI / 3f, 80f);
 		this.start = start;
+		System.out.println("" + start.x + " " + start.y);
 		
 	}
 
@@ -73,12 +73,9 @@ public class Player extends Camera {
 				// block position is in the center of the block so
 				// you have to add/substract its
 				// dimensions/2 to get the edges
-				if(b instanceof Trap) {
-					trapCollision = true;
-				}
 				if (b.isPointInCube(left, position.y, position.z)) {
-					if(trapCollision) {
-						moveTo(start.x, start.y-15, start.z);
+					if(b instanceof Trap) {
+						moveTo(start.x, start.y, start.z);
 					}
 					else {
 						moveTo(position.x-0.25f, position.y, position.z);
@@ -86,7 +83,7 @@ public class Player extends Camera {
 					}
 				} if (b.isPointInCube(right, position.y, position.z)) {
 					// move left
-					if(trapCollision) {
+					if(b instanceof Trap) {
 						moveTo(start.x, start.y-15, start.z);
 					}
 					else {
@@ -94,7 +91,7 @@ public class Player extends Camera {
 					}
 				}
 				if (b.isPointInCube(position.x, top, position.z)) {// move down
-					if(trapCollision) {
+					if(b instanceof Trap) {
 						moveTo(start.x, start.y, start.z);
 					}
 					else {
@@ -108,7 +105,7 @@ public class Player extends Camera {
 				}
 				if (b.isPointInCube(position.x, position.y, front)) {
 					// move back
-					if(trapCollision) {
+					if(b instanceof Trap) {
 						moveTo(start.x, start.y, start.z);
 					}
 					else {
@@ -117,7 +114,7 @@ public class Player extends Camera {
 					}
 				} if (b.isPointInCube(position.x, position.y, back)) {
 					// move forward
-					if(trapCollision) {
+					if(b instanceof Trap) {
 						moveTo(start.x, start.y, start.z);
 					}
 					else {

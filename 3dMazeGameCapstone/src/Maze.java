@@ -99,15 +99,16 @@ public class Maze {
 					}
 				}
 		}
-		
-		for (int i = 0; i < 10*size; i++) {
-			int rand = (int)(Math.random())*copyToCheck.size();
-			int x = copyToCheck.get(rand)[0];
-			int y = copyToCheck.get(rand)[1];
-			int z = copyToCheck.get(rand)[2];
+		ArrayList<Block> t = new ArrayList<Block>();
+		for (int i = 0; i < 5*size; i++) {
+			ArrayList<Block> b = getWalls();
+			
+			int rand = (int)(Math.random()*b.size());
+			int x = b.get(rand).x;
+			int y = b.get(rand).y;
+			int z = b.get(rand).z;
 			set(x, y, z, new Trap (x, y, z));
 		}
-		
 		start.t = ' '; // sets the type of the start and end blocks
 		end.t = 'e';
 	}
