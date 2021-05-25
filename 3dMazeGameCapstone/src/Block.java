@@ -10,7 +10,7 @@ import processing.core.PApplet;
  *         the ground or the wall
  */
 public class Block {
-	//private int fillColor;
+	private int gradient;
 	public int x, y, z;
 	public Maze maze;
 	public char t; // type of block, wall if 'w', empty if ' '
@@ -23,6 +23,7 @@ public class Block {
 		this.y = y;
 		this.z = z;
 		this.t = t;
+		gradient = (int)( Math.random() * 50);
 		tree = new HashSet<Block> (); // initializing the maze
 		tree.add(this);
 	}
@@ -33,10 +34,11 @@ public class Block {
 	 */
 	public void display(PApplet g) {
 		if (t == 'w') {
+			
 			g.pushMatrix();
 			g.translate(x*SIZE, y*SIZE, z*SIZE);
-			g.fill(100, (255), 100);
-			g.fill(100, 255, 100);
+			//g.fill(100, (255-gradient), 100);
+			g.fill(100, 255-gradient, 100);
 			g.box(SIZE);
 			g.popMatrix();
 		} else if (t == 'e') {
